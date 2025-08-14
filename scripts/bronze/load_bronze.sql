@@ -30,10 +30,10 @@ BEGIN
 		PRINT '------------------------------------------------';
 
 		SET @start_time = GETDATE();
-		PRINT '>> Truncating Table: bronze.crm_customer_info';
-		TRUNCATE TABLE bronze.crm_customer_info;
-		PRINT '>> Inserting Data Into: bronze.crm_customer_info';
-		BULK INSERT bronze.crm_customer_info
+		PRINT '>> Truncating Table: bronze.crm_cust_info';
+		TRUNCATE TABLE bronze.crm_cust_info;
+		PRINT '>> Inserting Data Into: bronze.crm_cust_info';
+		BULK INSERT bronze.crm_cust_info
 		FROM 'C:\Users\nova.obuka\Desktop\Letnja skola 2025\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
 		WITH (
 			FIRSTROW = 2,
