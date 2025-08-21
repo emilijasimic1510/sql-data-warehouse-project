@@ -1,11 +1,11 @@
 # Data Warehouse Project
 
-Welcome to the **Data Warehouse Project** repository! 🚀  
+Welcome to the **Data Warehouse Project** repository!  
 This project demonstrates how to design and build a modern data warehouse using the **Medallion Architecture** (Bronze, Silver, Gold). It covers the full pipeline: from ingesting raw data to producing analytics-ready models.
 
 ---
 
-## 🏗️ Data Architecture
+##  Data Architecture
 
 The data warehouse follows the **Bronze → Silver → Gold** layered approach:
 
@@ -13,12 +13,12 @@ The data warehouse follows the **Bronze → Silver → Gold** layered approach:
 2. **Silver Layer**: Cleansed and standardized data prepared for integration and analysis.  
 3. **Gold Layer**: Business-ready star schema with fact and dimension tables for reporting.
 
-📌 Example architecture:  
+ Example architecture:  
 `ERP/CRM CSV → Bronze → Silver → Gold → Analytics`
 
 ---
 
-## 📖 Project Overview
+##  Project Overview
 
 This project includes:
 
@@ -27,7 +27,7 @@ This project includes:
 - **Data Modeling**: Designing `dim_customers`, `dim_products`, and `fact_sales`.  
 - **Analytics & Reporting**: Providing insights on customer behavior, product performance, and sales trends.
 
-🎯 Skills demonstrated:  
+ Skills demonstrated:  
 - SQL Development  
 - Data Modeling (Star Schema)  
 - ETL Design (Bronze → Silver → Gold)  
@@ -35,7 +35,7 @@ This project includes:
 
 ---
 
-## 📂 Repository Structure
+##  Repository Structure
 ```
 data-warehouse-project/
 │
@@ -62,7 +62,7 @@ data-warehouse-project/
 
 ---
 
-## 🚀 How to Use
+##  How to Use
 
 1. **Clone the repo**  
    ```bash
@@ -83,5 +83,5 @@ data-warehouse-project/
 
 ---
 
-## 🛡️ License
+##  License
 This project is licensed under the [MIT License](LICENSE). You are free to use and adapt it with attribution.
