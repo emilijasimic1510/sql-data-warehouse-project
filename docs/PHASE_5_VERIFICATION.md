@@ -1,4 +1,8 @@
-# Faza 5 — zapis verifikacije
+# Faza 5 — istorijski zapis verifikacije
+
+**Naknadno stanje:** Faza 5B je završila stvarni build/import/UI/DAG dry-run. Videti
+[PHASE_5B_VERIFICATION.md](PHASE_5B_VERIFICATION.md). Ispod ostaje istorijski zapis početne faze 5;
+njene Docker blokade više nisu aktuelne. SQL blokada i dalje postoji.
 
 Datum: 20.10.2026. Implementacija i sve nezavisne lokalne provere završene.
 Stvarni Airflow image build, DagBag import i Airflow SQL učitavanje nisu izvršeni zbog

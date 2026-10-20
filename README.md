@@ -429,3 +429,5 @@ reports are historical records. No performance benchmark is claimed.
 
 Jedan DAG/task poziva postojeći E2E runner. Uputstva, runtime konfiguracija i bezbedan oporavak: [docs/AIRFLOW.md](docs/AIRFLOW.md). Stvarno stanje verifikacije: [docs/PHASE_5_VERIFICATION.md](docs/PHASE_5_VERIFICATION.md).
 
+
+Faza 5B: stvarni Airflow build, import, UI i DAG dry-run potvrđeni su u [docs/PHASE_5B_VERIFICATION.md](docs/PHASE_5B_VERIFICATION.md). SQL učitavanje još nije izvršeno iz Airflow-a.

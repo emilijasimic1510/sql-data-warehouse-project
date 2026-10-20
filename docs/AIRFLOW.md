@@ -1,4 +1,8 @@
-# Faza 5 — lokalni Apache Airflow
+# Faze 5 / 5B — lokalni Apache Airflow
+
+Faza 5B je stvarno verifikovana 20.10.2026: image build, metadata init, DagBag import, UI,
+health i jedan ručni DAG dry-run su PASS. DAG je ponovo paused, execute=false. Linux SQL preflight
+i stvarno SQL učitavanje nisu izvršeni. Detalji: [PHASE_5B_VERIFICATION.md](PHASE_5B_VERIFICATION.md).
 
 Airflow upravlja jednim postojećim E2E pozivom. Ne prepisuje transformacije: jedan DAG
 `warehouse_e2e`, jedan PythonOperator `run_warehouse_to_mart`, direktan poziv
@@ -16,19 +20,20 @@ SimpleAuthManager je isključivo lokalni demo, ne produkciona autentifikacija.
 
 | Komponenta | Verzija |
 |---|---|
-| Airflow image / Python | apache/airflow:3.3.2-python3.12 |
+| Airflow image / Python | apache/airflow:3.3.2-python3.12 / Python 3.12.14 |
 | standard provider | 1.19.0 |
 | PostgreSQL image | postgres:16.10-bookworm |
 | psycopg2-binary | 2.9.13 |
 | Microsoft ODBC 18 (Debian 12) | 18.7.1.1-1 |
 | Projektni pandas / pyodbc | 3.0.6 / 5.3.0 |
 
-Izabrana je podržana PostgreSQL 16 grana sa eksplicitnim patch tagom. Tagovi nisu digest lock;
-image build i pip check moraju proći pre upotrebe. Airflow i provider se prvo instaliraju uz
-zvanični constraints-3.3.2/constraints-3.12.txt. Potom se instalira postojeći projektni requirements
-uz ponovljeni Airflow pin. Time namerno zadržavamo pandas 3.0.6 umesto constraints 3.0.5;
-`pip check` proverava deklarisanu kompatibilnost. Ta kombinacija još nije potvrđena build-om
-na ovom računaru jer Docker engine nije pokrenut. Airflow nije instaliran u Windows .venv.
+Airflow i PostgreSQL su dodatno fiksirani proverenim SHA-256 image digest-ima u Dockerfile/Compose.
+Zvanični Airflow image već sadrži Microsoft ODBC 18.7.1.1-1 i njegov APT izvor. Dockerfile proverava
+verziju drivera umesto ponovnog dodavanja repozitorijuma, koje je izazivalo Signed-By konflikt.
+Airflow/provider se instaliraju uz zvanični constraints-3.3.2/constraints-3.12.txt; zatim se postojeći
+projektni pandas 3.0.6 zadržava uz ponovljeni Airflow pin. Stvarni build i pip check su prošli.
+Nisu dodavani paketi u postojeću Windows .venv. Provereni dependency inventar je u lokalnom
+reports/phase5b-image-versions.json.
 
 Izvori provereni 20.10.2026:
 [Airflow preduslovi](https://airflow.apache.org/docs/apache-airflow/stable/installation/prerequisites.html),
@@ -43,8 +48,9 @@ Izvori provereni 20.10.2026:
 
 ## Prvo pokretanje (PowerShell, iz korena repozitorijuma)
 
-Trenutno postoji blokada opisana u PHASE_5_VERIFICATION.md. Sledeće komande namenjene su
-pokretanju nakon što korisnik pokrene Docker Desktop sa Linux containers/WSL2 backend-om.
+Okruženje je podignuto u fazi 5B. Za ponovno pokretanje koristiti up komandu ispod, bez
+ponavljanja setup-a ili metadata init-a. Za novo okruženje prvo pokrenuti Docker Desktop
+sa Linux containers/WSL2 backend-om; zatim slediti ceo prvi postupak.
 Obezbediti najmanje 4 GB, poželjno 8 GB Docker memorije. Ne pokretati Docker/system cleanup.
 Pre izbora porta proveriti da 18080 nije zauzet; ne menjati Museum portove ili servise.
 
@@ -52,15 +58,15 @@ Pre izbora porta proveriti da 18080 nije zauzet; ne menjati Museum portove ili s
 # Samo prvi put; već izvršeno u ovoj fazi. Odbija prepisivanje postojećih tajni.
 .\orchestration\airflow\setup.ps1
 
-docker compose -f orchestration/airflow/compose.yaml config --quiet
-docker compose -f orchestration/airflow/compose.yaml build
-docker compose -f orchestration/airflow/compose.yaml --profile init run --rm airflow-init
-docker compose -f orchestration/airflow/compose.yaml --profile validate run --rm airflow-validate
-docker compose -f orchestration/airflow/compose.yaml up -d airflow-api-server airflow-scheduler airflow-dag-processor
-docker compose -f orchestration/airflow/compose.yaml ps
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml config --quiet
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml build airflow-scheduler
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml --profile init run --rm airflow-init
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml --profile validate run --rm airflow-validate
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml up -d --wait --wait-timeout 300 airflow-api-server airflow-scheduler airflow-dag-processor
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml ps
 ```
 
-Planirana adresa: http://localhost:18080, korisnik `operator`. Lozinka je u lokalnom
+Proverena adresa: http://localhost:18080, korisnik `operator`. Lozinka je u lokalnom
 `orchestration/airflow/runtime/ui-passwords.json`; otvoriti zaštićeni fajl lokalnim editorom,
 ne ispisivati ga u terminal/log. Setup pravi nasumične lozinke i uklanja nasleđene ACL-ove samo
 novog runtime foldera, dajući trenutnom Windows korisniku pristup. Docker Desktop mora da ima
@@ -112,8 +118,8 @@ Prvi ručni DAG run sa `DW_AIRFLOW_EXECUTE=false` proverava CSV i piše JSON, be
 U UI unpause DAG i Trigger. Nema automatskog schedule-a. Alternativno:
 
 ```powershell
-docker compose -f orchestration/airflow/compose.yaml exec airflow-scheduler airflow dags unpause warehouse_e2e
-docker compose -f orchestration/airflow/compose.yaml exec airflow-scheduler airflow dags trigger warehouse_e2e
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml exec airflow-scheduler airflow dags unpause warehouse_e2e
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml exec airflow-scheduler airflow dags trigger warehouse_e2e
 ```
 
 Airflow SUCCESS uz JSON mode=dry-run nije dokaz SQL učitavanja.
@@ -121,7 +127,7 @@ Posle odvojeno odobrene pripreme SQL TCP/auth i unosa Connection u zaštićeni w
 prvo izvršiti read-only proveru iz istog worker okruženja:
 
 ```powershell
-docker compose -f orchestration/airflow/compose.yaml run --rm --no-deps airflow-scheduler python -m airflow_orchestration.preflight
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml run --rm --no-deps airflow-scheduler python -m airflow_orchestration.preflight
 ```
 
 Preflight otvara vezu i proverava @@SERVERNAME, DB_NAME i postojeće procedure, bez load-a/migracija.
@@ -129,8 +135,8 @@ Ne ispisuje kredencijale. Tek posle PASS, dok DAG nema aktivan run, postaviti DW
 u runtime/worker.env pa primeniti konfiguraciju i ručno triggerovati jedan run:
 
 ```powershell
-docker compose -f orchestration/airflow/compose.yaml up -d --no-deps --force-recreate airflow-scheduler
-docker compose -f orchestration/airflow/compose.yaml exec airflow-scheduler airflow dags trigger warehouse_e2e
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml up -d --no-deps --force-recreate airflow-scheduler
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml exec airflow-scheduler airflow dags trigger warehouse_e2e
 ```
 
 E2E sam ponavlja target check pre mutacija. Ne koristiti `airflow tasks test` za execute proveru:
@@ -142,9 +148,9 @@ scheduler-a tek kada nema aktivnog run-a. Ne clear/retry task pre pregleda posle
 Task logovi: UI → DAG run → run_warehouse_to_mart → Logs, ili servisni logovi:
 
 ```powershell
-docker compose -f orchestration/airflow/compose.yaml logs --tail 100 airflow-scheduler airflow-api-server airflow-dag-processor
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml logs --tail 100 airflow-scheduler airflow-api-server airflow-dag-processor
 # Zaustavlja samo ovaj Compose projekat; čuva metadata/log volumene i JSON.
-docker compose -f orchestration/airflow/compose.yaml stop
+docker --context desktop-linux compose -f orchestration/airflow/compose.yaml stop --timeout 60
 ```
 
 Detaljni task logovi ostaju u projektnom airflow-logs volumenu. JSON je na hostu u reports/airflow;
@@ -175,3 +181,24 @@ Unknown proizvodi ostaju u ukupnom prihodu, bez pouzdanih istorijskih atributa/t
 
 Provere iz ove sesije, uključujući stvarne blokade i šta nije izvršeno, nalaze se u
 [PHASE_5_VERIFICATION.md](PHASE_5_VERIFICATION.md).
+
+## Potvrđeni dry-run faze 5B
+
+Airflow run_id: `phase5b_dry_run_20261020`, task SUCCESS, try_number=1, max_tries=0.
+Parent E2E run_id: `17d4aec2-ed83-42ba-8746-8e4b9934f37f`, mode=dry-run, status=PASS.
+Šest stvarnih CSV fajlova (116294 zapisa) provereno je preko read-only mount-a.
+SQL koraci su SKIPPED; audit NOT_APPLICABLE, mart committed=false. XCom value ima 198 bajtova.
+
+Host JSON: `reports/airflow/6dbddee2f19611cfbd41-try1-44f09fc86d034fadb0c96e7c72e4bb3d.json`.
+Log u projektnom airflow-logs volumenu:
+`/opt/airflow/logs/dag_id=warehouse_e2e/run_id=phase5b_dry_run_20261020/task_id=run_warehouse_to_mart/attempt=1.log`.
+Log je uspešno preuzet i autentifikovanim API-jem, kao u UI-u. Lokalna kopija je
+`reports/phase5b-task-log-api.log`; dokaz run-a i XCom-a je `reports/phase5b-dag-run.json`.
+
+Svi servisi imaju healthcheck; scheduler/DAG processor koriste 45 sekundi timeout-a jer je
+proverena CLI provera u ovom lokalnom okruženju prelazila 15 sekundi. Pri hladnom startu sačekati
+healthy stanje; startup može trajati nekoliko minuta. UI koristi unapred postavljeni operator nalog.
+U fazi 5B projektni runtime ACL dopunjen je pristupom stvarnog Windows korisnika DELL, pošto je
+prethodni setup radio pod CodexSandboxOffline nalogom. Tajne nisu ispisane u logove/izveštaje.
+
+Konkretan neizvršen predlog SQL povezivanja: [SQL_CONNECTION_PROPOSAL.md](SQL_CONNECTION_PROPOSAL.md).
