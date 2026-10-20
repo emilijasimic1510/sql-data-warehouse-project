@@ -1,0 +1,78 @@
+# Automated quality checks: Phase 2C
+
+`warehouse_pipeline/quality.py` is the canonical registry: stable check_id, object/layer, description,
+SQL, ERROR/WARNING severity, expectation and pass rule. Every query returns one aggregate count, never
+customer samples. The pipeline runs it after Silver or in --quality-only mode.
+
+`tests/quality_checks_silver.sql` and `tests/quality_checks_gold.sql` are generated SSMS SELECT scripts.
+Do not edit their rules independently. Regenerate with:
+
+```powershell
+.\.venv\Scripts\python.exe -m warehouse_pipeline.quality
+```
+
+A test compares both scripts to the registry's rendering. SSMS displays aggregate counts; these scripts
+alone do not THROW or create audit. Python applies zero-count rules and final exit status.
+
+## Review of all original diagnostics
+
+The S01-S16 IDs retain the original Silver-script order; S12F splits the future-date rule from S12.
+G01-G11 retain the original Gold-script order. S09 actually reads Bronze despite its historical location.
+
+| ID | Object / meaning | Decision |
+| --- | --- | --- |
+| S01 | silver.crm_cust_info, duplicate/NULL cst_id | ERROR; count offending key groups |
+| S02 | customer key outer spaces | ERROR; count rows |
+| S03 | marital-status DISTINCT list | Convert to ERROR domain: Single, Married, n/a; NULL invalid |
+| S04 | silver.crm_product_info, duplicate/NULL prd_id | ERROR; count offending key groups |
+| S05 | product-name outer spaces | ERROR |
+| S06 | NULL/negative product cost | ERROR; zero allowed |
+| S07 | product-line DISTINCT list | Convert to ERROR domain: Mountain, Road, Other Sales, Touring, n/a; NULL invalid |
+| S08 | product end before start | ERROR; NULL end still allowed |
+| S09 | bronze.crm_sales_info, numeric due-date shape/range | WARNING source diagnostic; not proof of calendar validity |
+| S10 | silver.crm_sales_info, order after shipping/due | ERROR |
+| S11 | sales/quantity/price NULL, nonpositive or arithmetic mismatch | ERROR; count affected rows, not distinct value triples; widen multiplication to bigint |
+| S12 | silver.erp_customer_info, birthdate before 1924-01-01 | WARNING review boundary, fixed rather than rolling; count rows, not distinct dates |
+| S12F | future birthdates | ERROR, split from S12; same GETDATE server-time predicate as transformation |
+| S13 | ERP gender DISTINCT list | Convert to ERROR domain: Female, Male, n/a; NULL invalid |
+| S14 | silver.erp_location_info, country DISTINCT list | INFO metric of distinct values including NULL; no invented closed country list |
+| S15 | silver.erp_product_category, category/subcategory/maintenance outer spaces | ERROR |
+| S16 | maintenance DISTINCT list | WARNING domain: Yes/No, NULL invalid; source convention, not loader-enforced contract |
+| G01 | gold.dim_customers, duplicate customer_key | ERROR; count duplicate groups |
+| G02 | duplicate customer_id | ERROR; business-key expectation promoted to gate |
+| G03 | NULL customer_key/customer_id/customer_number | ERROR |
+| G04 | gold.dim_products, duplicate product_key | ERROR; count duplicate groups |
+| G05 | duplicate product_number | ERROR; business-key expectation promoted to gate |
+| G06 | NULL product_key/product_number/product_id | ERROR |
+| G07 | gold.fact_sales, missing customer relationship | ERROR; NULL keys included |
+| G08 | missing product relationship | ERROR; NULL keys included |
+| G09 | NULL order_number/customer_key/product_key | ERROR |
+| G10 | shipping/due before order | ERROR |
+| G11 | negative sales/quantity/price | ERROR; original predicate still permits zero/NULL |
+
+Domain gates use the documented normalization outputs, not the number of DISTINCT rows. Maintenance
+remains advisory because the loader only copies it. Country uses rule=metric, status=INFO,
+metric_value=count, anomaly_count=NULL; its registry severity is WARNING but there is no threshold.
+All other rules expect zero. Positive counts take their rule's severity. SQL errors always get ERROR
+and anomaly_count=NULL, never zero, regardless of configured severity.
+
+These are affected-row counts except duplicate checks, which count groups. S11 and S12 intentionally
+change the original DISTINCT counting unit so multiple records with one bad value are not understated.
+Counts across checks can overlap and must not be summed as a number of distinct bad customers.
+
+## Remaining limitations
+
+- Nonempty row counts are recorded for all 15 business objects but are not gates or fixed expected totals.
+  Empty tables can pass these rules; no source-to-target completeness assertion was added.
+- Ordinary outer spaces use DATALENGTH/TRIM; tabs and all other whitespace are not covered.
+- Existing date-order predicates and many other predicates permit NULLs; only explicit NULL rules reject them.
+- Domain comparisons follow database collation and SQL padding semantics; they are not byte-exact checks.
+- Country distinct count is a compact metric, not a full distribution or validation of every country name.
+- Gold surrogate keys are generated by ROW_NUMBER; their uniqueness does not establish stable keys.
+- Checks are not enforced constraints, a whole-load transaction, a complete calendar validator or proof of
+  correctness for future datasets. Concurrent changes can produce inconsistent readings.
+
+Historical interpretation/results are preserved in [Phase 1C](PHASE_1C_VERIFICATION.md) and
+[Phase 2B JSON](PHASE_2B_RESULTS.json). Current observed results are in
+[Phase 2C verification](PHASE_2C_VERIFICATION.md). No source data or business transformations were altered
+in response to findings.

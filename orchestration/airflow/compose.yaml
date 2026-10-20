@@ -1,0 +1,71 @@
+name: dw-airflow-phase5
+x-airflow: &airflow
+  image: dw-airflow-phase5:3.3.2
+  build:
+    context: ../..
+    dockerfile: orchestration/airflow/Dockerfile
+  env_file: runtime/airflow.env
+  volumes:
+    - ../../datasets:/opt/project/datasets:ro
+    - ../../reports/airflow:/opt/project/reports/airflow
+    - airflow-logs:/opt/airflow/logs
+    - ./runtime/ui-passwords.json:/run/project/ui-passwords.json
+  depends_on:
+    postgres:
+      condition: service_healthy
+  restart: "no"
+services:
+  postgres:
+    image: postgres:16.10-bookworm@sha256:38471f330eb885e04de130b768d6db4e10469e2311879c7e5c699f6d2d8a1c74
+    env_file: runtime/postgres.env
+    volumes:
+      - metadata:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U airflow -d airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: "no"
+  airflow-init:
+    <<: *airflow
+    command: db migrate
+    profiles: [init]
+  airflow-api-server:
+    <<: *airflow
+    command: api-server
+    ports:
+      - "127.0.0.1:18080:8080"
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://localhost:8080/api/v2/monitor/health]
+      interval: 20s
+      timeout: 10s
+      start_period: 60s
+      retries: 5
+  airflow-scheduler:
+    <<: *airflow
+    command: scheduler
+    env_file:
+      - runtime/airflow.env
+      - runtime/worker.env
+    healthcheck:
+      test: [CMD-SHELL, "airflow jobs check --job-type SchedulerJob --local"]
+      interval: 45s
+      timeout: 45s
+      start_period: 90s
+      retries: 5
+  airflow-dag-processor:
+    <<: *airflow
+    command: dag-processor
+    healthcheck:
+      test: [CMD-SHELL, "airflow jobs check --job-type DagProcessorJob --local"]
+      interval: 45s
+      timeout: 45s
+      start_period: 90s
+      retries: 5
+  airflow-validate:
+    <<: *airflow
+    command: python /opt/project/validate_dag.py
+    profiles: [validate]
+volumes:
+  metadata:
+  airflow-logs:

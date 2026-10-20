@@ -1,0 +1,9 @@
+# Container context excludes datasets and all local credentials/runtime reports.
+.git
+.venv
+**/__pycache__
+.pytest_cache
+reports
+datasets
+demo_output
+orchestration/airflow/runtime

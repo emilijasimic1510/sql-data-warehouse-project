@@ -1,0 +1,148 @@
+{
+  "phase": "3A",
+  "date": "2026-10-11",
+  "tests_passed": 94,
+  "previous_tests": 51,
+  "new_tests": 43,
+  "seed": 42,
+  "start_date": "2026-01-01",
+  "generation_exit_code": 0,
+  "suite_verification_exit_code": 0,
+  "negative_package_exit_code": 1,
+  "suite_status": "PASS",
+  "protected_files_and_git_index_unchanged": true,
+  "preservation_entries": 27,
+  "database_connections": 0,
+  "sql_mutations": 0,
+  "runtime_git_ignored": true,
+  "output_directory": "demo_output/phase3a-seed42",
+  "packages": [
+    {
+      "directory": "00_snapshot",
+      "batch_id": "batch-ee04017e229663a9a8714852a7fbfa3a2a7f7889aa5df0ab3651123766a2c3d6",
+      "package_type": "snapshot",
+      "record_count": 3,
+      "sha256": "7e7bb86cbc9b3db1fbef7cad44dd8f402390a91641a681b859e11f667849767a",
+      "actual_validation_status": "PASS",
+      "matches_expectation": true,
+      "inserted": [
+        "1900000001",
+        "1900000002",
+        "1900000003"
+      ],
+      "updated": [],
+      "unchanged": []
+    },
+    {
+      "directory": "01_changes",
+      "batch_id": "batch-c16bf049a7eda8f0626ac8d19867653faca794b16f217dd13f14009779763db5",
+      "package_type": "delta",
+      "record_count": 3,
+      "sha256": "cc67480c6009e5fa08ff50abd32f131cc7dfac47f32188f47be005ac74b7773e",
+      "actual_validation_status": "PASS",
+      "matches_expectation": true,
+      "inserted": [
+        "1900000004"
+      ],
+      "updated": [
+        "1900000001"
+      ],
+      "unchanged": [
+        "1900000002",
+        "1900000003"
+      ]
+    },
+    {
+      "directory": "02_versions",
+      "batch_id": "batch-e9f269564e698367229935c1594c9453be5f5d8290c9134eb293af3263fa73f2",
+      "package_type": "delta",
+      "record_count": 2,
+      "sha256": "dcab5b0a615c221888eb10590acf4accf2a87a5cf061394424ab0e89b9615a29",
+      "actual_validation_status": "PASS",
+      "matches_expectation": true,
+      "inserted": [],
+      "updated": [
+        "1900000001"
+      ],
+      "unchanged": [
+        "1900000002",
+        "1900000003",
+        "1900000004"
+      ]
+    },
+    {
+      "directory": "03_late_arrival",
+      "batch_id": "batch-423a42db7978892c798b51508530e5fb7d396a40c5f62a4afccaeee8c0988c59",
+      "package_type": "delta",
+      "record_count": 3,
+      "sha256": "f64345a636ba6f7df3313e2665cde8c139613e38ed62d29bb38a62456be6ad2f",
+      "actual_validation_status": "PASS",
+      "matches_expectation": true,
+      "inserted": [
+        "1900000005"
+      ],
+      "updated": [
+        "1900000002"
+      ],
+      "unchanged": [
+        "1900000001",
+        "1900000003",
+        "1900000004"
+      ]
+    },
+    {
+      "directory": "04_stale",
+      "batch_id": "batch-c46a3673a9ad1a6ec2225885be8e357b66829d87578028841d3a3878336fc079",
+      "package_type": "delta",
+      "record_count": 2,
+      "sha256": "96fa85ab0e7534062a89b8dcb7d4533af5b66f96aba2f257aaf3f7aee609f1f3",
+      "actual_validation_status": "PASS",
+      "matches_expectation": true,
+      "inserted": [],
+      "updated": [],
+      "unchanged": [
+        "1900000001",
+        "1900000002",
+        "1900000003",
+        "1900000004",
+        "1900000005"
+      ]
+    },
+    {
+      "directory": "05_replay",
+      "batch_id": "batch-c16bf049a7eda8f0626ac8d19867653faca794b16f217dd13f14009779763db5",
+      "package_type": "delta",
+      "record_count": 3,
+      "sha256": "cc67480c6009e5fa08ff50abd32f131cc7dfac47f32188f47be005ac74b7773e",
+      "actual_validation_status": "PASS",
+      "matches_expectation": true,
+      "inserted": [],
+      "updated": [],
+      "unchanged": [
+        "1900000001",
+        "1900000002",
+        "1900000003",
+        "1900000004",
+        "1900000005"
+      ]
+    },
+    {
+      "directory": "06_negative",
+      "batch_id": "batch-5e2b032742e99327dd7eba065b9ea1910dc490e13da44b2918c0ecd0aa7c0395",
+      "package_type": "negative",
+      "record_count": 1,
+      "sha256": "b506f560f86f6676e1a97135b0d6e4c67f09f65f1fd60a62db6a8cd3631fb355",
+      "actual_validation_status": "FAIL",
+      "matches_expectation": true,
+      "inserted": [],
+      "updated": [],
+      "unchanged": [
+        "1900000001",
+        "1900000002",
+        "1900000003",
+        "1900000004",
+        "1900000005"
+      ]
+    }
+  ]
+}

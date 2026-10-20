@@ -2,6 +2,9 @@
 DDL Script: Create Gold Views (aligned to provided Silver tables)
 ===============================================================================*/
 
+USE DataWarehouse;
+GO
+
 -- (Optional) ensure schema exists
 IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'gold')
     EXEC('CREATE SCHEMA gold');

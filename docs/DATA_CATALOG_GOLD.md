@@ -13,7 +13,7 @@ It follows a **star schema** with **dimension** and **fact** objects.
 
 | Column Name     | Data Type    | Description                                                                                  |
 |-----------------|--------------|----------------------------------------------------------------------------------------------|
-| `customer_key`  | INT          | Surrogate key uniquely identifying each customer record in the dimension table.             |
+| `customer_key`  | BIGINT          | Surrogate key uniquely identifying each customer record in the dimension table.             |
 | `customer_id`   | INT          | Unique numerical identifier assigned to each customer (from CRM).                           |
 | `customer_number` | NVARCHAR(50) | Alphanumeric identifier representing the customer, used for tracking and referencing.      |
 | `first_name`    | NVARCHAR(50) | The customer's first name, as recorded in the system.                                       |
@@ -33,7 +33,7 @@ It follows a **star schema** with **dimension** and **fact** objects.
 
 | Column Name      | Data Type    | Description                                                                                  |
 |------------------|--------------|----------------------------------------------------------------------------------------------|
-| `product_key`    | INT          | Surrogate key uniquely identifying each product record in the product dimension table.      |
+| `product_key`    | BIGINT          | Surrogate key uniquely identifying each product record in the product dimension table.      |
 | `product_id`     | INT          | Unique identifier assigned to the product for internal tracking and referencing.            |
 | `product_number` | NVARCHAR(50) | Structured alphanumeric code representing the product; used for categorization.            |
 | `product_name`   | NVARCHAR(50) | Descriptive name of the product (e.g., type, color, size).                                  |
@@ -48,15 +48,15 @@ It follows a **star schema** with **dimension** and **fact** objects.
 ---
 
 ## 3) `gold.fact_sales`
-**Purpose:** Stores transactional sales data for analytical purposes.
+**Purpose:** Exposes sales line items for analytical purposes. An order can have multiple rows.
 
 ### Columns
 
 | Column Name    | Data Type    | Description                                                                                   |
 |----------------|--------------|-----------------------------------------------------------------------------------------------|
 | `order_number` | NVARCHAR(50) | Unique alphanumeric identifier for each sales order (e.g., `SO54496`).                        |
-| `product_key`  | INT          | Surrogate key linking the order to the product dimension (`gold.dim_products`).               |
-| `customer_key` | INT          | Surrogate key linking the order to the customer dimension (`gold.dim_customers`).            |
+| `product_key`  | BIGINT          | Surrogate key linking the order to the product dimension (`gold.dim_products`).               |
+| `customer_key` | BIGINT          | Surrogate key linking the order to the customer dimension (`gold.dim_customers`).            |
 | `order_date`   | DATE         | The date when the order was placed.                                                           |
 | `shipping_date`| DATE         | The date when the order was shipped to the customer.                                          |
 | `due_date`     | DATE         | The date when payment for the order was due.                                                  |
@@ -68,5 +68,6 @@ It follows a **star schema** with **dimension** and **fact** objects.
 
 ### Notes
 - `gold.dim_products` includes only active products (as defined in the corresponding view logic).
-- Surrogate keys (`customer_key`, `product_key`) are generated in Gold views and used as foreign keys in `gold.fact_sales`.
+- All three Gold objects are views, not stored tables. No separate Gold data load is needed.
+- `customer_key` and `product_key` are BIGINT values produced by ROW_NUMBER. They are calculated on query and can change when source rows change; they are not persisted keys or enforced foreign key constraints.
 - Column names mirror those produced by the Gold views to keep schema and documentation aligned.

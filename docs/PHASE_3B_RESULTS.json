@@ -1,0 +1,376 @@
+{
+  "phase": "3B",
+  "date": "2026-10-11",
+  "server": "DESKTOP-N1402MQ\\SQLEXPRESS",
+  "database": "DataWarehouse",
+  "unit_tests_passed": 111,
+  "sql_tests_skipped_in_default_suite": 7,
+  "sql_integration_tests_passed": 7,
+  "sql_pytest_cache_warning": "Non-test pytest cache creation warning; all seven tests passed.",
+  "source_and_full_load_files_preserved": true,
+  "preservation_entries": 32,
+  "original_business_objects": {
+    "bronze.crm_cust_info": {
+      "rows": 18494,
+      "sha256": "7a9e20e146675d9cd46fc5a09f9dfbfad942bb502b21e47ebd95ddf94daf17d9",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bronze.crm_product_info": {
+      "rows": 397,
+      "sha256": "1885729aead3c5f6fce3e0600f901e535e77e53e0a77422504c4a3d92cb602fe",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bronze.crm_sales_info": {
+      "rows": 60398,
+      "sha256": "3fb607c0d509c12c8bc257c4af4c0110dac857e7dfce58c7567ef6acacf858b6",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bronze.erp_customer_info": {
+      "rows": 18484,
+      "sha256": "225b735b5b9fd460c39a20d058a2e129d50bd6e90a6cd0d6fb21e034c30b5122",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bronze.erp_location_info": {
+      "rows": 18484,
+      "sha256": "11d1dba481265e456c9500f80f7e30079e14ad79ab280220de4984157ebd97fa",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bronze.erp_product_category": {
+      "rows": 37,
+      "sha256": "eebb63a3df7d4516388b6c13cb5f05f9eb5056b7e4f2a27482ee02d0300b0308",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "silver.crm_cust_info": {
+      "rows": 18484,
+      "sha256": "e06fc73bc0af55d62d46f391a9a893fda64d99c899f3fe4188b1061dd97c7dd3",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "silver.crm_product_info": {
+      "rows": 397,
+      "sha256": "d2dbcd4d65303c50b50cc05e0e5f10c1803c81e625704bdca16c644fba6b9c38",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "silver.crm_sales_info": {
+      "rows": 60398,
+      "sha256": "5efe89f5fa2c1c93213bc207db2713954641340f33a5c0e952a81d9ac914e657",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "silver.erp_customer_info": {
+      "rows": 18484,
+      "sha256": "f5302c0fd7b08e7555b07e1925b2d974e517b68ffd3d010bcd8f789b2536f34c",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "silver.erp_location_info": {
+      "rows": 18484,
+      "sha256": "b4186d170746849808d83cdc2c3d23b25c349ce44db119334e1004d4a51e74cd",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "silver.erp_product_category": {
+      "rows": 37,
+      "sha256": "a3c71f3d7baf8806ead84efdb81e429b1b16c934f81605d8e8b8231aa71cccf4",
+      "definition_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gold.dim_customers": {
+      "rows": 18484,
+      "sha256": "aa8e422a42478745d5daef1aba3e1aefc03a5cc4eb5010b5a62036c747fb39cf",
+      "definition_sha256": "5089722a40641747c3de5464985494f5736d1992ca764d8faa9c9e164a6e59a7"
+    },
+    "gold.dim_products": {
+      "rows": 295,
+      "sha256": "cebef5b1545cafc6110e793369d5ab0d4d5e5d5e4a42adbed2296ffdb60b1aa5",
+      "definition_sha256": "26486f4ae71730eccc6ac313dd194c3984bcda25fc102804e3f45d859b8bb870"
+    },
+    "gold.fact_sales": {
+      "rows": 60398,
+      "sha256": "bc916aae47628224901a7458ec9064607ca877b0e5a7a8be9c187e92a3dd1e8a",
+      "definition_sha256": "46b1174f4bdcd3e433d3bd5898314a87c537e47fc7044fc5f6b3161d21d4be64"
+    }
+  },
+  "sql_verification": {
+    "demo": [
+      {
+        "package": "00_snapshot",
+        "state_matches": true,
+        "package_number": 1,
+        "batch_id": "batch-ee04017e229663a9a8714852a7fbfa3a2a7f7889aa5df0ab3651123766a2c3d6",
+        "status": "APPLIED",
+        "started_at_utc": "2026-10-11T12:22:58.297Z",
+        "ended_at_utc": "2026-10-11T12:22:58.484Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 3,
+        "updated_customers": 0,
+        "insert_events": 3,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 0,
+        "committed": true,
+        "attempt_id": "0e24c01c-140d-4df4-ab47-289a2c2cfc21"
+      },
+      {
+        "package": "01_changes",
+        "state_matches": true,
+        "package_number": 1,
+        "batch_id": "batch-c16bf049a7eda8f0626ac8d19867653faca794b16f217dd13f14009779763db5",
+        "status": "APPLIED",
+        "started_at_utc": "2026-10-11T12:22:58.489Z",
+        "ended_at_utc": "2026-10-11T12:22:58.522Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 1,
+        "updated_customers": 1,
+        "insert_events": 1,
+        "update_events": 1,
+        "no_change_events": 1,
+        "stale_events": 0,
+        "duplicate_events": 0,
+        "committed": true,
+        "attempt_id": "1ecc1e38-f70c-4b5f-aac5-50c8ba6804ef"
+      },
+      {
+        "package": "02_versions",
+        "state_matches": true,
+        "package_number": 1,
+        "batch_id": "batch-e9f269564e698367229935c1594c9453be5f5d8290c9134eb293af3263fa73f2",
+        "status": "APPLIED",
+        "started_at_utc": "2026-10-11T12:22:58.529Z",
+        "ended_at_utc": "2026-10-11T12:22:58.543Z",
+        "error": null,
+        "input_events": 2,
+        "inserted_customers": 0,
+        "updated_customers": 1,
+        "insert_events": 0,
+        "update_events": 2,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 0,
+        "committed": true,
+        "attempt_id": "d41bc60a-948a-45a0-8176-d93e62341ca9"
+      },
+      {
+        "package": "03_late_arrival",
+        "state_matches": true,
+        "package_number": 1,
+        "batch_id": "batch-423a42db7978892c798b51508530e5fb7d396a40c5f62a4afccaeee8c0988c59",
+        "status": "APPLIED",
+        "started_at_utc": "2026-10-11T12:22:58.547Z",
+        "ended_at_utc": "2026-10-11T12:22:58.564Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 1,
+        "updated_customers": 1,
+        "insert_events": 1,
+        "update_events": 1,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 1,
+        "committed": true,
+        "attempt_id": "58bdfbdf-6344-43de-aacb-3fa22703093a"
+      },
+      {
+        "package": "04_stale",
+        "state_matches": true,
+        "package_number": 1,
+        "batch_id": "batch-c46a3673a9ad1a6ec2225885be8e357b66829d87578028841d3a3878336fc079",
+        "status": "APPLIED",
+        "started_at_utc": "2026-10-11T12:22:58.568Z",
+        "ended_at_utc": "2026-10-11T12:22:58.584Z",
+        "error": null,
+        "input_events": 2,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 1,
+        "stale_events": 1,
+        "duplicate_events": 0,
+        "committed": true,
+        "attempt_id": "2bbd7315-1c98-4270-9577-68df89b83eb8"
+      },
+      {
+        "package": "05_replay",
+        "state_matches": true,
+        "package_number": 1,
+        "batch_id": "batch-c16bf049a7eda8f0626ac8d19867653faca794b16f217dd13f14009779763db5",
+        "status": "REPLAY",
+        "started_at_utc": "2026-10-11T12:22:58.589Z",
+        "ended_at_utc": "2026-10-11T12:22:58.600Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 3,
+        "committed": true,
+        "attempt_id": "535e6ea4-da15-4f38-b83f-1e0d8c20b666"
+      },
+      {
+        "package": "06_negative",
+        "state_matches": true,
+        "package_number": 1,
+        "batch_id": "batch-5e2b032742e99327dd7eba065b9ea1910dc490e13da44b2918c0ecd0aa7c0395",
+        "status": "REJECTED",
+        "started_at_utc": "2026-10-11T12:22:58.604Z",
+        "ended_at_utc": "2026-10-11T12:22:58.609Z",
+        "error": "Demo contract/manifest validation failed before SQL connection.",
+        "input_events": 1,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 0,
+        "committed": false,
+        "commit_note": "On connection loss, reconcile batch_id in SQL before retry; replay is idempotent."
+      }
+    ],
+    "replay": [
+      {
+        "package": "00_snapshot",
+        "package_number": 1,
+        "batch_id": "batch-ee04017e229663a9a8714852a7fbfa3a2a7f7889aa5df0ab3651123766a2c3d6",
+        "status": "REPLAY",
+        "started_at_utc": "2026-10-11T12:22:58.614Z",
+        "ended_at_utc": "2026-10-11T12:22:58.626Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 3,
+        "committed": true,
+        "attempt_id": "46c0cf99-034a-4841-aa47-71743bc6a846"
+      },
+      {
+        "package": "01_changes",
+        "package_number": 1,
+        "batch_id": "batch-c16bf049a7eda8f0626ac8d19867653faca794b16f217dd13f14009779763db5",
+        "status": "REPLAY",
+        "started_at_utc": "2026-10-11T12:22:58.627Z",
+        "ended_at_utc": "2026-10-11T12:22:58.640Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 3,
+        "committed": true,
+        "attempt_id": "22809663-72cb-49b1-9b0b-25ff893cafe3"
+      },
+      {
+        "package": "02_versions",
+        "package_number": 1,
+        "batch_id": "batch-e9f269564e698367229935c1594c9453be5f5d8290c9134eb293af3263fa73f2",
+        "status": "REPLAY",
+        "started_at_utc": "2026-10-11T12:22:58.641Z",
+        "ended_at_utc": "2026-10-11T12:22:58.650Z",
+        "error": null,
+        "input_events": 2,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 2,
+        "committed": true,
+        "attempt_id": "992bfc5f-f480-46dc-baf1-f2155cd35d27"
+      },
+      {
+        "package": "03_late_arrival",
+        "package_number": 1,
+        "batch_id": "batch-423a42db7978892c798b51508530e5fb7d396a40c5f62a4afccaeee8c0988c59",
+        "status": "REPLAY",
+        "started_at_utc": "2026-10-11T12:22:58.651Z",
+        "ended_at_utc": "2026-10-11T12:22:58.663Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 3,
+        "committed": true,
+        "attempt_id": "d4bd1190-63e9-439d-93c0-58bbbc74f5e5"
+      },
+      {
+        "package": "04_stale",
+        "package_number": 1,
+        "batch_id": "batch-c46a3673a9ad1a6ec2225885be8e357b66829d87578028841d3a3878336fc079",
+        "status": "REPLAY",
+        "started_at_utc": "2026-10-11T12:22:58.664Z",
+        "ended_at_utc": "2026-10-11T12:22:58.675Z",
+        "error": null,
+        "input_events": 2,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 2,
+        "committed": true,
+        "attempt_id": "da823cf3-c54d-4056-a0cb-ff89da3a90ad"
+      },
+      {
+        "package": "05_replay",
+        "package_number": 1,
+        "batch_id": "batch-c16bf049a7eda8f0626ac8d19867653faca794b16f217dd13f14009779763db5",
+        "status": "REPLAY",
+        "started_at_utc": "2026-10-11T12:22:58.675Z",
+        "ended_at_utc": "2026-10-11T12:22:58.685Z",
+        "error": null,
+        "input_events": 3,
+        "inserted_customers": 0,
+        "updated_customers": 0,
+        "insert_events": 0,
+        "update_events": 0,
+        "no_change_events": 0,
+        "stale_events": 0,
+        "duplicate_events": 3,
+        "committed": true,
+        "attempt_id": "32ebd4b8-f0ec-426b-837d-5a56ee2ce567"
+      }
+    ],
+    "checks": {
+      "six_package_replay_unchanged": true,
+      "duplicate_event_and_batch_event_conflicts": true,
+      "equal_time_and_within_batch_conflicts": true,
+      "sql_unique_constraint_rollback": true,
+      "observed_precommit_sql_throw_rollback": {
+        "customer_visible_inside_transaction": true,
+        "transaction_count": 1,
+        "all_five_tables_restored": true
+      },
+      "concurrent_same_batch": [
+        "APPLIED",
+        "REPLAY"
+      ],
+      "snapshot_additive_redeployment_preserved": true
+    },
+    "cleanup": true,
+    "schema_signature": "8615B95402149ADED7E01EA9D4F4A2708E29C649A91F18F165807749725420EE",
+    "business_objects_unchanged": true,
+    "final_counts": {
+      "staging": 32,
+      "events": 12,
+      "batches": 5,
+      "attempts": 12,
+      "customers": 5
+    },
+    "pytest_failures_at_teardown": 0
+  }
+}

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+reports/
+*.validation.json
+demo_output/
+
+orchestration/airflow/runtime/

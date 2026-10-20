@@ -17,7 +17,9 @@ Usage Example:
     EXEC Silver.load_silver;
 ===============================================================================
 */
-EXEC silver.load_silver;
+USE DataWarehouse;
+GO
+
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 BEGIN
     DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
@@ -51,8 +53,8 @@ BEGIN
 			TRIM(cst_firstname) AS cst_firstname,
 			TRIM(cst_lastname) AS cst_lastname,
 			CASE 
-				WHEN UPPER(TRIM(cst_material_status)) = 'S' THEN 'Single'
-				WHEN UPPER(TRIM(cst_material_status)) = 'M' THEN 'Married'
+				WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
+				WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
 				ELSE 'n/a'
 			END AS cst_marital_status, -- Normalize marital status values to readable format
 			CASE 
@@ -244,10 +246,12 @@ BEGIN
 	END TRY
 	BEGIN CATCH
 		PRINT '=========================================='
-		PRINT 'ERROR OCCURED DURING LOADING BRONZE LAYER'
-		PRINT 'Error Message' + ERROR_MESSAGE();
-		PRINT 'Error Message' + CAST (ERROR_NUMBER() AS NVARCHAR);
-		PRINT 'Error Message' + CAST (ERROR_STATE() AS NVARCHAR);
-		PRINT '=========================================='
+		PRINT 'ERROR OCCURED DURING LOADING SILVER LAYER'
+		PRINT 'Error Message: ' + ERROR_MESSAGE();
+		PRINT 'Error Number: ' + CAST (ERROR_NUMBER() AS NVARCHAR);
+		PRINT 'Error State: ' + CAST (ERROR_STATE() AS NVARCHAR);
+		PRINT '==========================================';
+        THROW;
 	END CATCH
-END
+END;
+GO
