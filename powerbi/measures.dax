@@ -1,0 +1,88 @@
+// MANUAL AUTHORING SOURCE, not a DAX query to execute as one block.
+// Modeling > New measure: copy ONE name = expression at a time, in this order.
+// Table names and relationships must match MODEL.md. Runtime validation in Desktop is pending.
+
+Sales Amount = SUM(fact_sales[sales_amount])
+
+Quantity = SUM(fact_sales[quantity])
+
+Sales Rows = COUNTROWS(fact_sales)
+
+Orders = DISTINCTCOUNT(fact_sales[order_number])
+
+Average Order Value = DIVIDE([Sales Amount], [Orders])
+
+Purchasing Customers =
+CALCULATE(DISTINCTCOUNT(fact_sales[customer_key]), KEEPFILTERS(fact_sales[customer_key] <> 0))
+
+Repeat Customers =
+COALESCE(COUNTROWS(FILTER(VALUES(fact_sales[customer_key]),
+    fact_sales[customer_key] <> 0 && CALCULATE([Orders]) >= 2)), 0)
+
+Repeat Customer Rate = DIVIDE([Repeat Customers], [Purchasing Customers])
+
+Unknown Product Sales Amount =
+COALESCE(CALCULATE([Sales Amount], KEEPFILTERS(fact_sales[product_key] = 0)), 0)
+
+Unknown Product Sales Rate = DIVIDE([Unknown Product Sales Amount], [Sales Amount])
+
+// These two diagnostic cards deliberately ignore Calendar slicers; retain customer/product context.
+Sales Without Order Date =
+COALESCE(CALCULATE([Sales Rows], REMOVEFILTERS('Calendar'),
+    KEEPFILTERS(fact_sales[order_date_key] = 0)), 0)
+
+Sales Amount Without Order Date =
+COALESCE(CALCULATE([Sales Amount], REMOVEFILTERS('Calendar'),
+    KEEPFILTERS(fact_sales[order_date_key] = 0)), 0)
+
+Sales by Shipping Date =
+CALCULATE([Sales Amount], USERELATIONSHIP('Calendar'[Date], fact_sales[source_shipping_date]))
+
+Sales by Due Date =
+CALCULATE([Sales Amount], USERELATIONSHIP('Calendar'[Date], fact_sales[source_due_date]))
+
+// Global observed bounds; do not infer completeness from today's date or category's last sale.
+Data First Order Date = CALCULATE(MIN(fact_sales[source_order_date]), REMOVEFILTERS())
+
+Data Last Order Date = CALCULATE(MAX(fact_sales[source_order_date]), REMOVEFILTERS())
+
+// Only ONE entire calendar month selected. Exclude BOTH boundary months and require
+// the previous full month to be inside observed bounds. BLANK is 'not comparable', not zero.
+Sales MoM Rate =
+VAR Anchor = MAX('Calendar'[Date])
+VAR StartDate = DATE(YEAR(Anchor), MONTH(Anchor), 1)
+VAR EndDate = EOMONTH(StartDate, 0)
+VAR PreviousStart = EDATE(StartDate, -1)
+VAR Eligible = HASONEVALUE('Calendar'[Year Month])
+    && COUNTROWS('Calendar') = DAY(EndDate)
+    && PreviousStart > [Data First Order Date] && EndDate < [Data Last Order Date]
+VAR PreviousAmount = CALCULATE([Sales Amount], REMOVEFILTERS('Calendar'),
+    DATESBETWEEN('Calendar'[Date], PreviousStart, StartDate - 1))
+RETURN IF(Eligible, DIVIDE([Sales Amount] - PreviousAmount, PreviousAmount))
+
+// Full YEAR vs previous full YEAR, not a monthly YoY or YTD measure.
+Sales YoY Rate =
+VAR SelectedYear = COALESCE(SELECTEDVALUE('Calendar'[Year]), 2000)
+VAR StartDate = DATE(SelectedYear, 1, 1)
+VAR EndDate = DATE(SelectedYear, 12, 31)
+VAR PreviousStart = DATE(SelectedYear - 1, 1, 1)
+VAR Eligible = HASONEVALUE('Calendar'[Year])
+    && COUNTROWS('Calendar') = EndDate - StartDate + 1
+    && PreviousStart > [Data First Order Date] && EndDate < [Data Last Order Date]
+VAR PreviousAmount = CALCULATE([Sales Amount], REMOVEFILTERS('Calendar'),
+    DATESBETWEEN('Calendar'[Date], PreviousStart, StartDate - 1))
+RETURN IF(Eligible, DIVIDE([Sales Amount] - PreviousAmount, PreviousAmount))
+
+// audit_snapshot is one disconnected row; global operational cards ignore business slicers.
+Last Confirmed Mart Completion UTC = MAX(audit_snapshot[last_confirmed_mart_completion_utc])
+
+Last Successful E2E UTC = MAX(audit_snapshot[last_successful_e2e_utc])
+
+Last Successful E2E Seconds = MAX(audit_snapshot[last_successful_e2e_seconds])
+
+Latest E2E Status = SELECTEDVALUE(audit_snapshot[latest_e2e_status], "No audit evidence")
+
+Latest E2E Started UTC = MAX(audit_snapshot[latest_e2e_started_utc])
+
+// Refresh observation, not warehouse freshness or source event freshness.
+BI Refresh Observed UTC = MAX(audit_snapshot[observed_at_utc])

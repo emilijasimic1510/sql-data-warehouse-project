@@ -1,5 +1,15 @@
 # SQL Data Warehouse Project
 
+## Start here: Windows operation and Power BI preparation
+
+- [Windows quickstart](docs/QUICKSTART_WINDOWS.md): separates first installation, everyday dry-run,
+  intentional reloads, read-only SQL checks, audit and Airflow operation.
+- [Sales Performance & Data Reliability](powerbi/README.md): Import model, KPI contract, DAX,
+  SQL references, theme and four report-page specifications. Phase 6A delivers preparation files;
+  no verified PBIX/PBIP or Power BI refresh is claimed.
+- [Phase 6A evidence](docs/PHASE_6A_VERIFICATION.md): current read-only SQL measurements and tests,
+  including unknown-product coverage and mixed dated/undated order limitations.
+
 A SQL Server learning project based on the **Data with Baraa** data warehouse tutorial,
 being developed into a junior Data Engineering / Data Analyst portfolio project.
 Phase 1 prepares the existing project for repeatable manual setup and full reloads.

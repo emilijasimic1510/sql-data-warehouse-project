@@ -1,0 +1,16 @@
+{
+  "name": "Sales Performance & Data Reliability",
+  "dataColors": ["#137C8B", "#2455A4", "#7964AE", "#D18B16", "#597287", "#C65050", "#3D8C74", "#697480"],
+  "background": "#F5F7FA",
+  "foreground": "#172B4D",
+  "tableAccent": "#137C8B",
+  "good": "#237A57",
+  "neutral": "#B66C08",
+  "bad": "#BA3030",
+  "textClasses": {
+    "title": {"fontFace": "Segoe UI", "fontSize": 14, "color": "#172B4D"},
+    "header": {"fontFace": "Segoe UI", "fontSize": 12, "color": "#172B4D"},
+    "label": {"fontFace": "Segoe UI", "fontSize": 11, "color": "#35465C"},
+    "callout": {"fontFace": "Segoe UI Semibold", "fontSize": 28, "color": "#172B4D"}
+  }
+}

@@ -1,0 +1,1992 @@
+{
+  "captured_at_utc": "2026-10-21T11:55:28.725988+00:00",
+  "read_only": true,
+  "results": {
+    "01_kpis.sql": [
+      [
+        {
+          "sales_rows": 60398,
+          "orders": 27659,
+          "sales_amount": "29356250.00",
+          "quantity": "60423",
+          "purchasing_customers": 18484,
+          "average_order_value": "1061.363389",
+          "first_order_date": "2010-12-29",
+          "last_order_date": "2014-01-28",
+          "first_shipping_date": "2011-01-05",
+          "last_shipping_date": "2014-02-04",
+          "first_due_date": "2011-01-10",
+          "last_due_date": "2014-02-09",
+          "sales_without_order_date": 19,
+          "amount_without_order_date": "4992.00",
+          "unknown_product_sales_amount": "8654683.00",
+          "unknown_product_pct": "29.481568"
+        }
+      ],
+      [
+        {
+          "purchasing_customers": 18484,
+          "repeat_customers": 6865,
+          "repeat_customer_pct": "37.140229387578446223761"
+        }
+      ],
+      [
+        {
+          "product_match_reason": "BEFORE_HISTORY",
+          "sales_rows": 18410,
+          "sales_amount": "8649691.00",
+          "quantity": 18426
+        },
+        {
+          "product_match_reason": "MISSING_ORDER_DATE",
+          "sales_rows": 19,
+          "sales_amount": "4992.00",
+          "quantity": 19
+        }
+      ],
+      [
+        {
+          "category": "Bikes",
+          "sales_rows": 10797,
+          "sales_amount": "19946205.00"
+        },
+        {
+          "category": "Unknown historical category",
+          "sales_rows": 18429,
+          "sales_amount": "8654683.00"
+        },
+        {
+          "category": "Accessories",
+          "sales_rows": 23639,
+          "sales_amount": "498180.00"
+        },
+        {
+          "category": "Clothing",
+          "sales_rows": 7533,
+          "sales_amount": "257182.00"
+        }
+      ],
+      [
+        {
+          "current_customer_country": "United States",
+          "sales_rows": 20473,
+          "sales_amount": "9162327.00"
+        },
+        {
+          "current_customer_country": "Australia",
+          "sales_rows": 13345,
+          "sales_amount": "9060172.00"
+        },
+        {
+          "current_customer_country": "United Kingdom",
+          "sales_rows": 6906,
+          "sales_amount": "3391376.00"
+        },
+        {
+          "current_customer_country": "Germany",
+          "sales_rows": 5625,
+          "sales_amount": "2894066.00"
+        },
+        {
+          "current_customer_country": "France",
+          "sales_rows": 5558,
+          "sales_amount": "2643751.00"
+        },
+        {
+          "current_customer_country": "Canada",
+          "sales_rows": 7620,
+          "sales_amount": "1977738.00"
+        },
+        {
+          "current_customer_country": "n/a",
+          "sales_rows": 871,
+          "sales_amount": "226820.00"
+        }
+      ],
+      [
+        {
+          "order_year": null,
+          "order_month": null,
+          "sales_rows": 19,
+          "orders": 15,
+          "sales_amount": "4992.00"
+        },
+        {
+          "order_year": 2010,
+          "order_month": 12,
+          "sales_rows": 14,
+          "orders": 14,
+          "sales_amount": "43419.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 1,
+          "sales_rows": 144,
+          "orders": 144,
+          "sales_amount": "469795.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 2,
+          "sales_rows": 144,
+          "orders": 144,
+          "sales_amount": "466307.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 3,
+          "sales_rows": 150,
+          "orders": 150,
+          "sales_amount": "485165.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 4,
+          "sales_rows": 157,
+          "orders": 157,
+          "sales_amount": "502042.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 5,
+          "sales_rows": 174,
+          "orders": 174,
+          "sales_amount": "561647.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 6,
+          "sales_rows": 230,
+          "orders": 230,
+          "sales_amount": "737793.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 7,
+          "sales_rows": 188,
+          "orders": 188,
+          "sales_amount": "596710.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 8,
+          "sales_rows": 193,
+          "orders": 193,
+          "sales_amount": "614516.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 9,
+          "sales_rows": 185,
+          "orders": 185,
+          "sales_amount": "603047.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 10,
+          "sales_rows": 221,
+          "orders": 221,
+          "sales_amount": "708164.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 11,
+          "sales_rows": 208,
+          "orders": 208,
+          "sales_amount": "660507.00"
+        },
+        {
+          "order_year": 2011,
+          "order_month": 12,
+          "sales_rows": 222,
+          "orders": 222,
+          "sales_amount": "669395.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 1,
+          "sales_rows": 252,
+          "orders": 252,
+          "sales_amount": "495363.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 2,
+          "sales_rows": 260,
+          "orders": 260,
+          "sales_amount": "506992.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 3,
+          "sales_rows": 212,
+          "orders": 212,
+          "sales_amount": "373478.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 4,
+          "sales_rows": 219,
+          "orders": 219,
+          "sales_amount": "400324.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 5,
+          "sales_rows": 207,
+          "orders": 207,
+          "sales_amount": "358866.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 6,
+          "sales_rows": 318,
+          "orders": 318,
+          "sales_amount": "555142.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 7,
+          "sales_rows": 246,
+          "orders": 246,
+          "sales_amount": "444533.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 8,
+          "sales_rows": 294,
+          "orders": 294,
+          "sales_amount": "523887.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 9,
+          "sales_rows": 269,
+          "orders": 269,
+          "sales_amount": "486149.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 10,
+          "sales_rows": 313,
+          "orders": 313,
+          "sales_amount": "535125.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 11,
+          "sales_rows": 324,
+          "orders": 324,
+          "sales_amount": "537918.00"
+        },
+        {
+          "order_year": 2012,
+          "order_month": 12,
+          "sales_rows": 483,
+          "orders": 355,
+          "sales_amount": "624454.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 1,
+          "sales_rows": 1662,
+          "orders": 632,
+          "sales_amount": "857758.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 2,
+          "sales_rows": 3453,
+          "orders": 1421,
+          "sales_amount": "771218.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 3,
+          "sales_rows": 4087,
+          "orders": 1690,
+          "sales_amount": "1049732.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 4,
+          "sales_rows": 3979,
+          "orders": 1612,
+          "sales_amount": "1045860.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 5,
+          "sales_rows": 4399,
+          "orders": 1792,
+          "sales_amount": "1284456.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 6,
+          "sales_rows": 5025,
+          "orders": 2007,
+          "sales_amount": "1642948.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 7,
+          "sales_rows": 4671,
+          "orders": 1875,
+          "sales_amount": "1371595.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 8,
+          "sales_rows": 4848,
+          "orders": 1964,
+          "sales_amount": "1545910.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 9,
+          "sales_rows": 4616,
+          "orders": 1884,
+          "sales_amount": "1447324.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 10,
+          "sales_rows": 5298,
+          "orders": 2131,
+          "sales_amount": "1673261.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 11,
+          "sales_rows": 5224,
+          "orders": 2087,
+          "sales_amount": "1780688.00"
+        },
+        {
+          "order_year": 2013,
+          "order_month": 12,
+          "sales_rows": 5520,
+          "orders": 2192,
+          "sales_amount": "1874128.00"
+        },
+        {
+          "order_year": 2014,
+          "order_month": 1,
+          "sales_rows": 1970,
+          "orders": 871,
+          "sales_amount": "45642.00"
+        }
+      ]
+    ],
+    "02_audit.sql": [
+      [
+        {
+          "run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "parent_run_id": null,
+          "component": "e2e",
+          "mode": "execute",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:25.650000",
+          "ended_at_utc": "2026-10-11 22:39:36.358000",
+          "failure_stage": null,
+          "elapsed_seconds": "10.708000"
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "parent_run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "component": "warehouse",
+          "mode": "execute",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:25.652000",
+          "ended_at_utc": "2026-10-11 22:39:28.310000",
+          "failure_stage": null,
+          "elapsed_seconds": "2.658000"
+        },
+        {
+          "run_id": "9352CB00-52AD-468D-A7A9-42B846B65ADF",
+          "parent_run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "component": "mart",
+          "mode": "execute",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:28.376000",
+          "ended_at_utc": "2026-10-11 22:39:36.268000",
+          "failure_stage": null,
+          "elapsed_seconds": "7.892000"
+        }
+      ],
+      [
+        {
+          "run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "ordinal": 1,
+          "name": "warehouse",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:25.652000",
+          "ended_at_utc": "2026-10-11 22:39:28.376000",
+          "duration_seconds": 2.724797
+        },
+        {
+          "run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "ordinal": 2,
+          "name": "mart",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:28.376000",
+          "ended_at_utc": "2026-10-11 22:39:36.268000",
+          "duration_seconds": 7.891812
+        },
+        {
+          "run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "ordinal": 3,
+          "name": "summary",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:36.268000",
+          "ended_at_utc": "2026-10-11 22:39:36.358000",
+          "duration_seconds": 0.09005
+        },
+        {
+          "run_id": "9352CB00-52AD-468D-A7A9-42B846B65ADF",
+          "ordinal": 1,
+          "name": "mart",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:28.376000",
+          "ended_at_utc": "2026-10-11 22:39:36.268000",
+          "duration_seconds": 7.891812
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 1,
+          "name": "validation",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:25.652000",
+          "ended_at_utc": "2026-10-11 22:39:25.982000",
+          "duration_seconds": 0.330702
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 2,
+          "name": "connection",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:25.983000",
+          "ended_at_utc": "2026-10-11 22:39:26.122000",
+          "duration_seconds": 0.139088
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 3,
+          "name": "target_check",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:26.122000",
+          "ended_at_utc": "2026-10-11 22:39:26.129000",
+          "duration_seconds": 0.006642
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 4,
+          "name": "coordination",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:26.129000",
+          "ended_at_utc": "2026-10-11 22:39:26.149000",
+          "duration_seconds": 0.020424
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 5,
+          "name": "audit_start",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:26.149000",
+          "ended_at_utc": "2026-10-11 22:39:26.152000",
+          "duration_seconds": 0.003045
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 6,
+          "name": "bronze",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:26.152000",
+          "ended_at_utc": "2026-10-11 22:39:26.417000",
+          "duration_seconds": 0.26502
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 7,
+          "name": "silver",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:26.418000",
+          "ended_at_utc": "2026-10-11 22:39:26.940000",
+          "duration_seconds": 0.522063
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 8,
+          "name": "quality",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:26.940000",
+          "ended_at_utc": "2026-10-11 22:39:28.139000",
+          "duration_seconds": 1.199118
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "ordinal": 9,
+          "name": "row_counts",
+          "status": "PASS",
+          "started_at_utc": "2026-10-11 22:39:28.139000",
+          "ended_at_utc": "2026-10-11 22:39:28.310000",
+          "duration_seconds": 0.170845
+        }
+      ],
+      [
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G01",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G02",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G03",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G04",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G05",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G06",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G07",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G08",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G09",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G10",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "G11",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S01",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S02",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S03",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S04",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S05",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S06",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S07",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S08",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S09",
+          "severity": "WARNING",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S10",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S11",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S12",
+          "severity": "WARNING",
+          "status": "WARNING",
+          "anomaly_count": 15,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S12F",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S13",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S14",
+          "severity": "WARNING",
+          "status": "INFO",
+          "anomaly_count": null,
+          "metric_value": 7
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S15",
+          "severity": "ERROR",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "run_id": "D47E3A56-6D5A-487C-A4C1-7EBF14392CF1",
+          "check_id": "S16",
+          "severity": "WARNING",
+          "status": "PASS",
+          "anomaly_count": 0,
+          "metric_value": null
+        }
+      ],
+      [
+        {
+          "run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "started_at_utc": "2026-10-11 22:39:25.650000",
+          "ended_at_utc": "2026-10-11 22:39:36.358000",
+          "elapsed_seconds": "10.708000"
+        }
+      ],
+      [
+        {
+          "run_id": "9352CB00-52AD-468D-A7A9-42B846B65ADF",
+          "parent_run_id": "4803C33F-D430-45EA-B9E5-65B2C791E27B",
+          "last_confirmed_mart_completion_utc": "2026-10-11 22:39:36.268000"
+        }
+      ],
+      [
+        {
+          "component": "e2e",
+          "mode": "execute",
+          "status": "PASS",
+          "runs": 1
+        },
+        {
+          "component": "mart",
+          "mode": "execute",
+          "status": "PASS",
+          "runs": 1
+        },
+        {
+          "component": "warehouse",
+          "mode": "execute",
+          "status": "PASS",
+          "runs": 2
+        },
+        {
+          "component": "warehouse",
+          "mode": "quality-only",
+          "status": "PASS",
+          "runs": 1
+        }
+      ]
+    ],
+    "03_reconciliation.sql": [
+      [
+        {
+          "check_id": "M01",
+          "severity": "ERROR",
+          "description": "Dimension primary keys and business version keys must be unique",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M02",
+          "severity": "ERROR",
+          "description": "Every fact FK must resolve",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M03",
+          "severity": "ERROR",
+          "description": "Present product intervals must not overlap",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M04",
+          "severity": "ERROR",
+          "description": "Valid intervals and one open current version per product",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M05",
+          "severity": "ERROR",
+          "description": "Known fact product must match business key and inclusive order-date interval",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M06",
+          "severity": "ERROR",
+          "description": "Known customer must match source business key",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M07",
+          "severity": "ERROR",
+          "description": "Role date keys must exactly preserve source dates; NULL uses key zero",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M08",
+          "severity": "ERROR",
+          "description": "Unknown mapping is allowed only when no valid member exists",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M09",
+          "severity": "ERROR",
+          "description": "Fact row count equals Silver count",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M10",
+          "severity": "ERROR",
+          "description": "Fact total quantity equals Silver",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M11",
+          "severity": "ERROR",
+          "description": "Fact total amount equals Silver",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M12",
+          "severity": "ERROR",
+          "description": "Complete source business-row multisets must match including duplicate multiplicity",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M13",
+          "severity": "ERROR",
+          "description": "Unknown members exist in all dimensions",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "M14",
+          "severity": "ERROR",
+          "description": "In-source customer and product counts reconcile with Silver",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "R01",
+          "severity": "WARNING",
+          "description": "Fact quantity metric; no error threshold",
+          "anomaly_count": null,
+          "metric_value": "60423"
+        },
+        {
+          "check_id": "R02",
+          "severity": "WARNING",
+          "description": "Fact amount metric; no error threshold",
+          "anomaly_count": null,
+          "metric_value": "29356250.00"
+        },
+        {
+          "check_id": "U01",
+          "severity": "WARNING",
+          "description": "Unknown customer links",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "U02",
+          "severity": "WARNING",
+          "description": "Unknown product: missing order date",
+          "anomaly_count": 19,
+          "metric_value": null
+        },
+        {
+          "check_id": "U03",
+          "severity": "WARNING",
+          "description": "Unknown product: missing product business key",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "U04",
+          "severity": "WARNING",
+          "description": "Unknown product: before source history",
+          "anomaly_count": 18410,
+          "metric_value": null
+        },
+        {
+          "check_id": "U05",
+          "severity": "WARNING",
+          "description": "Unknown product: after closed source history",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "U06",
+          "severity": "WARNING",
+          "description": "Unknown product: gap in source history",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "U07",
+          "severity": "WARNING",
+          "description": "Unknown order date",
+          "anomaly_count": 19,
+          "metric_value": null
+        },
+        {
+          "check_id": "U08",
+          "severity": "WARNING",
+          "description": "Unknown shipping date",
+          "anomaly_count": 0,
+          "metric_value": null
+        },
+        {
+          "check_id": "U09",
+          "severity": "WARNING",
+          "description": "Unknown due date",
+          "anomaly_count": 0,
+          "metric_value": null
+        }
+      ],
+      [
+        {
+          "layer": "silver",
+          "sales_rows": 60398,
+          "amount": "29356250.00",
+          "quantity": "60423"
+        },
+        {
+          "layer": "mart",
+          "sales_rows": 60398,
+          "amount": "29356250.00",
+          "quantity": "60423"
+        }
+      ],
+      [
+        {
+          "joined_rows": 60398,
+          "joined_sales_amount": "29356250.00"
+        }
+      ],
+      [
+        {
+          "nonnull_dates": 1139,
+          "distinct_dates": 1139,
+          "min_date": "2010-12-29",
+          "max_date": "2014-02-09",
+          "expected_contiguous_dates": 1139
+        }
+      ],
+      [
+        {
+          "inconsistent_orders": 13
+        }
+      ]
+    ],
+    "04_period_comparisons.sql": [
+      [
+        {
+          "period_start": "2010-12-01",
+          "amount": "43419.00",
+          "previous_amount": null,
+          "mom_rate": null
+        },
+        {
+          "period_start": "2011-01-01",
+          "amount": "469795.00",
+          "previous_amount": "43419.00",
+          "mom_rate": null
+        },
+        {
+          "period_start": "2011-02-01",
+          "amount": "466307.00",
+          "previous_amount": "469795.00",
+          "mom_rate": "-0.007424"
+        },
+        {
+          "period_start": "2011-03-01",
+          "amount": "485165.00",
+          "previous_amount": "466307.00",
+          "mom_rate": "0.040441"
+        },
+        {
+          "period_start": "2011-04-01",
+          "amount": "502042.00",
+          "previous_amount": "485165.00",
+          "mom_rate": "0.034786"
+        },
+        {
+          "period_start": "2011-05-01",
+          "amount": "561647.00",
+          "previous_amount": "502042.00",
+          "mom_rate": "0.118725"
+        },
+        {
+          "period_start": "2011-06-01",
+          "amount": "737793.00",
+          "previous_amount": "561647.00",
+          "mom_rate": "0.313624"
+        },
+        {
+          "period_start": "2011-07-01",
+          "amount": "596710.00",
+          "previous_amount": "737793.00",
+          "mom_rate": "-0.191223"
+        },
+        {
+          "period_start": "2011-08-01",
+          "amount": "614516.00",
+          "previous_amount": "596710.00",
+          "mom_rate": "0.029840"
+        },
+        {
+          "period_start": "2011-09-01",
+          "amount": "603047.00",
+          "previous_amount": "614516.00",
+          "mom_rate": "-0.018663"
+        },
+        {
+          "period_start": "2011-10-01",
+          "amount": "708164.00",
+          "previous_amount": "603047.00",
+          "mom_rate": "0.174309"
+        },
+        {
+          "period_start": "2011-11-01",
+          "amount": "660507.00",
+          "previous_amount": "708164.00",
+          "mom_rate": "-0.067296"
+        },
+        {
+          "period_start": "2011-12-01",
+          "amount": "669395.00",
+          "previous_amount": "660507.00",
+          "mom_rate": "0.013456"
+        },
+        {
+          "period_start": "2012-01-01",
+          "amount": "495363.00",
+          "previous_amount": "669395.00",
+          "mom_rate": "-0.259984"
+        },
+        {
+          "period_start": "2012-02-01",
+          "amount": "506992.00",
+          "previous_amount": "495363.00",
+          "mom_rate": "0.023475"
+        },
+        {
+          "period_start": "2012-03-01",
+          "amount": "373478.00",
+          "previous_amount": "506992.00",
+          "mom_rate": "-0.263345"
+        },
+        {
+          "period_start": "2012-04-01",
+          "amount": "400324.00",
+          "previous_amount": "373478.00",
+          "mom_rate": "0.071881"
+        },
+        {
+          "period_start": "2012-05-01",
+          "amount": "358866.00",
+          "previous_amount": "400324.00",
+          "mom_rate": "-0.103561"
+        },
+        {
+          "period_start": "2012-06-01",
+          "amount": "555142.00",
+          "previous_amount": "358866.00",
+          "mom_rate": "0.546933"
+        },
+        {
+          "period_start": "2012-07-01",
+          "amount": "444533.00",
+          "previous_amount": "555142.00",
+          "mom_rate": "-0.199244"
+        },
+        {
+          "period_start": "2012-08-01",
+          "amount": "523887.00",
+          "previous_amount": "444533.00",
+          "mom_rate": "0.178510"
+        },
+        {
+          "period_start": "2012-09-01",
+          "amount": "486149.00",
+          "previous_amount": "523887.00",
+          "mom_rate": "-0.072034"
+        },
+        {
+          "period_start": "2012-10-01",
+          "amount": "535125.00",
+          "previous_amount": "486149.00",
+          "mom_rate": "0.100742"
+        },
+        {
+          "period_start": "2012-11-01",
+          "amount": "537918.00",
+          "previous_amount": "535125.00",
+          "mom_rate": "0.005219"
+        },
+        {
+          "period_start": "2012-12-01",
+          "amount": "624454.00",
+          "previous_amount": "537918.00",
+          "mom_rate": "0.160872"
+        },
+        {
+          "period_start": "2013-01-01",
+          "amount": "857758.00",
+          "previous_amount": "624454.00",
+          "mom_rate": "0.373612"
+        },
+        {
+          "period_start": "2013-02-01",
+          "amount": "771218.00",
+          "previous_amount": "857758.00",
+          "mom_rate": "-0.100890"
+        },
+        {
+          "period_start": "2013-03-01",
+          "amount": "1049732.00",
+          "previous_amount": "771218.00",
+          "mom_rate": "0.361135"
+        },
+        {
+          "period_start": "2013-04-01",
+          "amount": "1045860.00",
+          "previous_amount": "1049732.00",
+          "mom_rate": "-0.003688"
+        },
+        {
+          "period_start": "2013-05-01",
+          "amount": "1284456.00",
+          "previous_amount": "1045860.00",
+          "mom_rate": "0.228133"
+        },
+        {
+          "period_start": "2013-06-01",
+          "amount": "1642948.00",
+          "previous_amount": "1284456.00",
+          "mom_rate": "0.279100"
+        },
+        {
+          "period_start": "2013-07-01",
+          "amount": "1371595.00",
+          "previous_amount": "1642948.00",
+          "mom_rate": "-0.165162"
+        },
+        {
+          "period_start": "2013-08-01",
+          "amount": "1545910.00",
+          "previous_amount": "1371595.00",
+          "mom_rate": "0.127089"
+        },
+        {
+          "period_start": "2013-09-01",
+          "amount": "1447324.00",
+          "previous_amount": "1545910.00",
+          "mom_rate": "-0.063772"
+        },
+        {
+          "period_start": "2013-10-01",
+          "amount": "1673261.00",
+          "previous_amount": "1447324.00",
+          "mom_rate": "0.156106"
+        },
+        {
+          "period_start": "2013-11-01",
+          "amount": "1780688.00",
+          "previous_amount": "1673261.00",
+          "mom_rate": "0.064202"
+        },
+        {
+          "period_start": "2013-12-01",
+          "amount": "1874128.00",
+          "previous_amount": "1780688.00",
+          "mom_rate": "0.052474"
+        },
+        {
+          "period_start": "2014-01-01",
+          "amount": "45642.00",
+          "previous_amount": "1874128.00",
+          "mom_rate": null
+        },
+        {
+          "period_start": "2014-02-01",
+          "amount": "0.00",
+          "previous_amount": "45642.00",
+          "mom_rate": null
+        }
+      ],
+      [
+        {
+          "y": 2010,
+          "amount": "43419.00",
+          "previous_amount": null,
+          "yoy_rate": null
+        },
+        {
+          "y": 2011,
+          "amount": "7075088.00",
+          "previous_amount": "43419.00",
+          "yoy_rate": null
+        },
+        {
+          "y": 2012,
+          "amount": "5842231.00",
+          "previous_amount": "7075088.00",
+          "yoy_rate": "-0.174253"
+        },
+        {
+          "y": 2013,
+          "amount": "16344878.00",
+          "previous_amount": "5842231.00",
+          "yoy_rate": "1.797711"
+        },
+        {
+          "y": 2014,
+          "amount": "45642.00",
+          "previous_amount": "16344878.00",
+          "yoy_rate": null
+        }
+      ]
+    ]
+  },
+  "target": [
+    "DESKTOP-N1402MQ\\SQLEXPRESS",
+    "DataWarehouse"
+  ],
+  "schema": [
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "run_id",
+      "type_name": "uniqueidentifier",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "started_at_utc",
+      "type_name": "datetime2",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "ended_at_utc",
+      "type_name": "datetime2",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "status",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "mode",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "error",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "parent_run_id",
+      "type_name": "uniqueidentifier",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "component",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "summary_json",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_runs",
+      "column_name": "failure_stage",
+      "type_name": "varchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "run_id",
+      "type_name": "uniqueidentifier",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "ordinal",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "name",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "status",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "started_at_utc",
+      "type_name": "datetime2",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "ended_at_utc",
+      "type_name": "datetime2",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "duration_seconds",
+      "type_name": "float",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "pipeline_steps",
+      "column_name": "error",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "run_id",
+      "type_name": "uniqueidentifier",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "check_id",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "severity",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "status",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "anomaly_count",
+      "type_name": "bigint",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "metric_value",
+      "type_name": "bigint",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "duration_seconds",
+      "type_name": "float",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "audit",
+      "table_name": "quality_results",
+      "column_name": "error",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "customer_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "customer_id",
+      "type_name": "int",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "customer_number",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "first_name",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "last_name",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "country",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "marital_status",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "gender",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "birthdate",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "create_date",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_customer",
+      "column_name": "is_in_source",
+      "type_name": "bit",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_date",
+      "column_name": "date_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_date",
+      "column_name": "calendar_date",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_date",
+      "column_name": "calendar_year",
+      "type_name": "smallint",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_date",
+      "column_name": "calendar_quarter",
+      "type_name": "tinyint",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_date",
+      "column_name": "calendar_month",
+      "type_name": "tinyint",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_date",
+      "column_name": "calendar_day",
+      "type_name": "tinyint",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "product_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "product_number",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "source_product_id",
+      "type_name": "int",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "product_name",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "category_id",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "category",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "subcategory",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "maintenance",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "product_line",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "cost",
+      "type_name": "decimal",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "valid_from",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "valid_to",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "is_current",
+      "type_name": "bit",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "dim_product",
+      "column_name": "is_in_source",
+      "type_name": "bit",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "fact_key",
+      "type_name": "bigint",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "order_number",
+      "type_name": "nvarchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "source_customer_id",
+      "type_name": "int",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "source_product_number",
+      "type_name": "nvarchar",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "customer_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "product_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "order_date_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "shipping_date_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "due_date_key",
+      "type_name": "int",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "source_order_date",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "source_shipping_date",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "source_due_date",
+      "type_name": "date",
+      "is_nullable": true
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "sales_amount",
+      "type_name": "decimal",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "quantity",
+      "type_name": "bigint",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "price",
+      "type_name": "decimal",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "customer_match_reason",
+      "type_name": "varchar",
+      "is_nullable": false
+    },
+    {
+      "schema_name": "mart",
+      "table_name": "fact_sales",
+      "column_name": "product_match_reason",
+      "type_name": "varchar",
+      "is_nullable": false
+    }
+  ],
+  "quality_body_matches_local": true,
+  "warehouse_quality": [
+    {
+      "check_id": "S01",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S02",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S03",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S04",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S05",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S06",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S07",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S08",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S09",
+      "severity": "WARNING",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S10",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S11",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S12",
+      "severity": "WARNING",
+      "rule": "zero",
+      "value": 15
+    },
+    {
+      "check_id": "S12F",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S13",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S14",
+      "severity": "WARNING",
+      "rule": "metric",
+      "value": 7
+    },
+    {
+      "check_id": "S15",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "S16",
+      "severity": "WARNING",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G01",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G02",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G03",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G04",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G05",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G06",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G07",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G08",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G09",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G10",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    },
+    {
+      "check_id": "G11",
+      "severity": "ERROR",
+      "rule": "zero",
+      "value": 0
+    }
+  ],
+  "source_hashes": {
+    "datasets\\source_crm\\cust_info.csv": "bfe0034e64d21b495a33ee04d7554378e524665973f020ff58945f50cd752bc9",
+    "datasets\\source_crm\\prd_info.csv": "3db1d644b424aa42599c5a00a8b1297b7b099367c180a63b141f91efac0de45b",
+    "datasets\\source_crm\\sales_details.csv": "0a1e565ae2e8accec217819226d7b71104cc6075590172ed855617a8930a4369",
+    "datasets\\source_erp\\CUST_AZ12.csv": "096fbf5a99b45d9a7549906941857c7b66405b7b8a522b02347b75fd11fdb484",
+    "datasets\\source_erp\\LOC_A101.csv": "d46239d31bfa3a78e8a6cc8ee97a51e914b2db2db460bfb79a3aeadaf8e028c0",
+    "datasets\\source_erp\\PX_CAT_G1V2.csv": "ef8048319a2cc23907fc6caf215d31cca5e0bf908590fd6bd7dfa81b48ac9743"
+  }
+}
