@@ -11,7 +11,7 @@ table fact_sales
 		formatString: 0
 		lineageTag: a05b2039-572a-4092-835c-3667ab8b6b86
 
-	measure 'Total Quantity' = SUM(fact_sales[quantity])
+	measure 'Units sold' = SUM(fact_sales[quantity])
 		formatString: 0
 		lineageTag: b2467b37-6474-432d-ae34-7a9157f1f2f2
 
