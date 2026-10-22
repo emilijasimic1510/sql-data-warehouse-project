@@ -1,0 +1,266 @@
+table fact_sales
+	lineageTag: c2a7eb54-ca9d-460f-a86c-2d5cb9087e8d
+
+	measure 'Sales Amount' = SUM(fact_sales[sales_amount])
+		formatString: #,0.00
+		lineageTag: 7a43eefb-cde9-4643-8eb1-2edee176929a
+
+		changedProperty = IsHidden
+
+	measure Orders = DISTINCTCOUNT(fact_sales[order_number])
+		formatString: 0
+		lineageTag: a05b2039-572a-4092-835c-3667ab8b6b86
+
+	measure 'Total Quantity' = SUM(fact_sales[quantity])
+		formatString: 0
+		lineageTag: b2467b37-6474-432d-ae34-7a9157f1f2f2
+
+	measure 'Average Order Value' = DIVIDE([Sales Amount], [Orders])
+		formatString: #,0.00
+		lineageTag: d9450ba0-e27a-41c6-bafd-4c8e6abf99d2
+
+	measure 'Sales Without Order Date' =
+			
+			COALESCE(
+			    CALCULATE(
+			        COUNTROWS(fact_sales),
+			        REMOVEFILTERS('Calendar'),
+			        KEEPFILTERS(fact_sales[order_date_key] = 0)
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: deba4f0b-eb88-44bd-815b-1a2754794ab5
+
+	measure 'Sales Amount Without Order Date' =
+			
+			COALESCE(
+			    CALCULATE(
+			        [Sales Amount],
+			        REMOVEFILTERS('Calendar'),
+			        KEEPFILTERS(fact_sales[order_date_key] = 0)
+			    ),
+			    0
+			)
+		formatString: #,0.00
+		lineageTag: 7db287b7-f51a-4d04-a02a-ed7d264098c3
+
+	column fact_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 4f5531e7-015b-4ee4-8cac-aaeed16485da
+		summarizeBy: sum
+		sourceColumn: fact_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_number
+		dataType: string
+		lineageTag: bc4a31d5-52c7-4b6c-8371-788f4ddfe773
+		summarizeBy: none
+		sourceColumn: order_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 34ea2e5e-d9aa-48d7-bab8-32b85ecda517
+		summarizeBy: sum
+		sourceColumn: source_customer_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_product_number
+		dataType: string
+		lineageTag: 0bd67bcf-cd1d-4a36-9cff-ae48b8429569
+		summarizeBy: none
+		sourceColumn: source_product_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b596311-f644-4b9f-8785-a59a8b2aa6a0
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_key
+		dataType: int64
+		formatString: 0
+		lineageTag: ccea4e6d-ec79-491c-802b-fd7437b15f79
+		summarizeBy: none
+		sourceColumn: product_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: c8c682b6-a31e-439d-b188-717d785a173f
+		summarizeBy: sum
+		sourceColumn: order_date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: f0ac983a-96a7-4aa2-8c13-467413deb0fb
+		summarizeBy: sum
+		sourceColumn: shipping_date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column due_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 62d81157-c9ff-455d-aa89-2c3da5e8e038
+		summarizeBy: sum
+		sourceColumn: due_date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7a6ffb53-dd42-4294-9c8c-033d1b2018d5
+		summarizeBy: none
+		sourceColumn: source_order_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column source_shipping_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb18ae55-4f17-4389-a247-500238dd18d2
+		summarizeBy: none
+		sourceColumn: source_shipping_date
+
+		variation Variation
+			isDefault
+			relationship: 57d89928-c96c-4ee9-a247-c25c8f45d30a
+			defaultHierarchy: LocalDateTable_e53794b4-d952-4868-aef8-1051f02a65b5.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column source_due_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 908e1e2b-8cd8-43a3-b88b-383adb6e647e
+		summarizeBy: none
+		sourceColumn: source_due_date
+
+		variation Variation
+			isDefault
+			relationship: 33cef85a-d030-40a2-9bef-b6d14f939782
+			defaultHierarchy: LocalDateTable_eab56db2-6acf-470e-9295-35fab6f04993.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column sales_amount
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 64fa99b4-2347-44f8-a5a0-92d2452527ef
+		summarizeBy: sum
+		sourceColumn: sales_amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 46122593-af68-47ae-8be6-2f3408444d00
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 7aecb898-2b33-4643-acbf-4ad5e5e0719a
+		summarizeBy: sum
+		sourceColumn: price
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column customer_match_reason
+		dataType: string
+		lineageTag: 364ad562-f190-4d7d-a9ec-5caf98dd46bd
+		summarizeBy: none
+		sourceColumn: customer_match_reason
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_match_reason
+		dataType: string
+		lineageTag: 908bf779-b45f-41d0-83b9-41c6948308b7
+		summarizeBy: none
+		sourceColumn: product_match_reason
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_sales = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-N1402MQ\SQLEXPRESS", "DataWarehouse"),
+				    mart_fact_sales = Source{[Schema="mart",Item="fact_sales"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(mart_fact_sales,{{"source_order_date", type date}, {"source_shipping_date", type date}, {"source_due_date", type date}, {"sales_amount", Currency.Type}, {"quantity", Int64.Type}, {"price", Currency.Type}})
+				in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

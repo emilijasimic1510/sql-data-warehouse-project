@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["dim_customer","dim_product","fact_sales","dim_date","Calendar"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.144.878.0 (25.06)+9cca29236de5114792f4d7188221f91ad4a5cc50
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_customer
+ref table DateTableTemplate_e413aafb-cf8b-4ab2-b7a9-c2f557f717b2
+ref table dim_product
+ref table LocalDateTable_5d67babd-dd26-42cd-80a5-a108ff0575fb
+ref table LocalDateTable_451ec428-4b66-4543-ba59-fd5d54ee005e
+ref table fact_sales
+ref table LocalDateTable_e53794b4-d952-4868-aef8-1051f02a65b5
+ref table LocalDateTable_eab56db2-6acf-470e-9295-35fab6f04993
+ref table Calendar
+ref table LocalDateTable_b54787c6-56ff-4b56-9b45-06b7145933aa
+ref table LocalDateTable_bccb0f68-e41d-4e38-9723-3221d208c1ed
+
+ref cultureInfo en-US
+

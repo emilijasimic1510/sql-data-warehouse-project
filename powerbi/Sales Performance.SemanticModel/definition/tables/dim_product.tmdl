@@ -1,0 +1,150 @@
+table dim_product
+	lineageTag: 999c2e9d-4b6b-4cf2-9f6b-de683038e67e
+
+	column product_key
+		dataType: int64
+		formatString: 0
+		lineageTag: b79b625b-29b1-4ed7-bf8e-6ee25f1e96b6
+		summarizeBy: none
+		sourceColumn: product_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_number
+		dataType: string
+		lineageTag: bdfc883b-f1cc-4dcb-9f33-5d0c3b80dbfe
+		summarizeBy: none
+		sourceColumn: product_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0360f475-c6ef-4bb7-9ce4-836e110cc75e
+		summarizeBy: sum
+		sourceColumn: source_product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 195b79a7-c6e8-48b9-a7a9-ba9fd30afff1
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_id
+		dataType: string
+		lineageTag: a533c802-e985-4366-a5bd-26f75c50166a
+		summarizeBy: none
+		sourceColumn: category_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 6f738b3e-4198-4dd8-abd7-9b39dfbdf294
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column subcategory
+		dataType: string
+		lineageTag: 136def94-a2e3-4bf2-86c2-a8ad01abcda8
+		summarizeBy: none
+		sourceColumn: subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column maintenance
+		dataType: string
+		lineageTag: 9aefd225-8205-41ff-959d-c8d67965c1af
+		summarizeBy: none
+		sourceColumn: maintenance
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_line
+		dataType: string
+		lineageTag: 6bc6e303-3e6b-40a6-bbdc-af3c50c551f7
+		summarizeBy: none
+		sourceColumn: product_line
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost
+		dataType: double
+		lineageTag: c631ffba-5f0e-4a8f-84ab-a72cc0165eb3
+		summarizeBy: sum
+		sourceColumn: cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valid_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b85a8621-486e-4e9b-88dc-115c5b67c3b4
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		variation Variation
+			isDefault
+			relationship: 3a7a9065-f0d3-491e-b782-fb760b5bc04a
+			defaultHierarchy: LocalDateTable_5d67babd-dd26-42cd-80a5-a108ff0575fb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7def0dda-77e4-4299-a27c-73d1bda3543c
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		variation Variation
+			isDefault
+			relationship: 34b1f364-38de-4f5b-b4ae-45718a18f1a5
+			defaultHierarchy: LocalDateTable_451ec428-4b66-4543-ba59-fd5d54ee005e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ea369839-14a0-4736-9b0f-164e0a423123
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_in_source
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 682764c6-504e-4897-87ff-426ec64b7990
+		summarizeBy: none
+		sourceColumn: is_in_source
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_product = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-N1402MQ\SQLEXPRESS", "DataWarehouse"),
+				    mart_dim_product = Source{[Schema="mart",Item="dim_product"]}[Data]
+				in
+				    mart_dim_product
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,12 @@
+expression dim_date =
+		let
+		    Source = Sql.Database("DESKTOP-N1402MQ\SQLEXPRESS", "DataWarehouse"),
+		    mart_dim_date = Source{[Schema="mart",Item="dim_date"]}[Data]
+		in
+		    mart_dim_date
+	lineageTag: 6077eec3-b529-483c-a848-7162d32307db
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

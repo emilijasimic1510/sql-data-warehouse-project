@@ -1,0 +1,123 @@
+table dim_customer
+	lineageTag: b69036e8-13d2-4376-83ad-9f3bf5358cdf
+
+	column is_in_source
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c836f61a-eb45-4818-a6d9-d657f756c1f5
+		summarizeBy: none
+		sourceColumn: is_in_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		lineageTag: bfd42157-2ab1-4641-9586-323d078663bb
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a3648d4a-328b-421f-a093-77b8a40a087d
+		summarizeBy: sum
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_number
+		dataType: string
+		lineageTag: a2d03223-dacd-4a20-938c-e141d7db820a
+		summarizeBy: none
+		sourceColumn: customer_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_name
+		dataType: string
+		lineageTag: b26a730b-05fc-4b39-94a9-aea6315e9a58
+		summarizeBy: none
+		sourceColumn: first_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_name
+		dataType: string
+		lineageTag: aa9e2af6-b69e-4e7d-9e51-7f6e90b7f353
+		summarizeBy: none
+		sourceColumn: last_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: bb89fd7e-0532-47af-97b7-e070167813bd
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column marital_status
+		dataType: string
+		lineageTag: 6771a86d-af68-4fdc-9bc2-92295dcc4473
+		summarizeBy: none
+		sourceColumn: marital_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 3461251b-da27-4d8a-95c2-17d962e2b115
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column birthdate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 567f3a48-c033-4fab-a071-7bc9b76ea0e0
+		summarizeBy: none
+		sourceColumn: birthdate
+
+		variation Variation
+			isDefault
+			relationship: dca7600d-8fdd-434f-97ff-889587a06257
+			defaultHierarchy: LocalDateTable_b54787c6-56ff-4b56-9b45-06b7145933aa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column create_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 80f5c413-f933-4e37-b3a2-4e5ec16fb714
+		summarizeBy: none
+		sourceColumn: create_date
+
+		variation Variation
+			isDefault
+			relationship: 88753611-e959-45e5-8f44-8136e9f76388
+			defaultHierarchy: LocalDateTable_bccb0f68-e41d-4e38-9723-3221d208c1ed.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_customer = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-N1402MQ\SQLEXPRESS", "DataWarehouse"),
+				    mart_dim_customer = Source{[Schema="mart",Item="dim_customer"]}[Data]
+				in
+				    mart_dim_customer
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

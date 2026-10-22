@@ -1,0 +1,98 @@
+table Calendar
+	lineageTag: 2fd5e189-e954-4930-958d-0d4c76b3eec4
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 8001393c-589c-45f0-bb7a-9b3c6944315f
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 5cc420ba-ca59-47a5-bc3e-f425fe2fc947
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: fefa5122-7f90-4053-b184-28d7b259fad3
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 6a47c8bc-348a-41de-97f3-96044a9fb90e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month'
+		dataType: string
+		lineageTag: cfe8afc8-1dd3-4ecc-8459-851cc71ab8fe
+		summarizeBy: none
+		sourceColumn: Year Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Start'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c4b93fd4-41d3-4b58-997b-7452d5e94d2a
+		summarizeBy: none
+		sourceColumn: Month Start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    KnownDates = List.RemoveNulls(dim_date[calendar_date]),
+				    FirstDate = Date.StartOfYear(Date.From(List.Min(KnownDates))),
+				    LastDate = Date.EndOfYear(Date.From(List.Max(KnownDates))),
+				    Dates = List.Dates(
+				        FirstDate,
+				        Duration.Days(LastDate - FirstDate) + 1,
+				        #duration(1, 0, 0, 0)
+				    ),
+				    Base = Table.FromList(Dates, Splitter.SplitByNothing(), {"Date"}),
+				    Typed = Table.TransformColumnTypes(Base, {{"Date", type date}}),
+				    AddYear = Table.AddColumn(Typed, "Year", each Date.Year([Date]), Int64.Type),
+				    AddMonthNumber = Table.AddColumn(
+				        AddYear, "Month Number", each Date.Month([Date]), Int64.Type
+				    ),
+				    AddMonth = Table.AddColumn(
+				        AddMonthNumber, "Month",
+				        each Date.ToText([Date], "MMM", "en-US"), type text
+				    ),
+				    AddYearMonth = Table.AddColumn(
+				        AddMonth, "Year Month",
+				        each Date.ToText([Date], "yyyy-MM", "en-US"), type text
+				    ),
+				    AddMonthStart = Table.AddColumn(
+				        AddYearMonth, "Month Start",
+				        each Date.StartOfMonth([Date]), type date
+				    )
+				in
+				    AddMonthStart
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

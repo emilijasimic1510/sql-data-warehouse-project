@@ -1,0 +1,44 @@
+relationship 3a7a9065-f0d3-491e-b782-fb760b5bc04a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_product.valid_from
+	toColumn: LocalDateTable_5d67babd-dd26-42cd-80a5-a108ff0575fb.Date
+
+relationship 34b1f364-38de-4f5b-b4ae-45718a18f1a5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_product.valid_to
+	toColumn: LocalDateTable_451ec428-4b66-4543-ba59-fd5d54ee005e.Date
+
+relationship 57d89928-c96c-4ee9-a247-c25c8f45d30a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_sales.source_shipping_date
+	toColumn: LocalDateTable_e53794b4-d952-4868-aef8-1051f02a65b5.Date
+
+relationship 33cef85a-d030-40a2-9bef-b6d14f939782
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_sales.source_due_date
+	toColumn: LocalDateTable_eab56db2-6acf-470e-9295-35fab6f04993.Date
+
+relationship 1f1315a8-fe15-4378-a762-fa74477978b1
+	fromColumn: fact_sales.product_key
+	toColumn: dim_product.product_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship dca7600d-8fdd-434f-97ff-889587a06257
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_customer.birthdate
+	toColumn: LocalDateTable_b54787c6-56ff-4b56-9b45-06b7145933aa.Date
+
+relationship 88753611-e959-45e5-8f44-8136e9f76388
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_customer.create_date
+	toColumn: LocalDateTable_bccb0f68-e41d-4e38-9723-3221d208c1ed.Date
+
+relationship edf9e11b-3f59-bd1e-0958-f694ca76a841
+	fromColumn: fact_sales.customer_key
+	toColumn: dim_customer.customer_key
+
+relationship dba78ed9-8f1d-2bbf-dac6-218bb2992959
+	fromColumn: fact_sales.source_order_date
+	toColumn: Calendar.Date
+
