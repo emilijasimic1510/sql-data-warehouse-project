@@ -1,4 +1,4 @@
-# Phase 2A: read-only CSV structure validation
+# CSV structure validation
 
 This optional preflight checks six source files before a separate SQL load. It does not connect to
 SQL Server, run SQL, change CSV data, or automatically start/stop an external pipeline.
@@ -12,7 +12,7 @@ SQL Server, run SQL, change CSV data, or automatically start/stop an external pi
 | `csv_validation/__main__.py` | CLI, per-file results, summary, exit codes and optional JSON report. |
 | `csv_validation/__init__.py` | Marks the directory as a Python package. |
 | `tests/test_csv_validation.py` | Small pytest cases using temporary files only. |
-| `requirements.txt` | Shared runtime dependencies: Pandas for validation, pyodbc for the optional Phase 2B runner. |
+| `requirements.txt` | Shared runtime dependencies: Pandas for validation, pyodbc for the warehouse runner. |
 | `requirements-dev.txt` | Runtime dependencies plus pytest for tests. |
 | `.gitignore` | Excludes `.venv`, Python caches, `reports/` folders and `*.validation.json`. |
 
@@ -22,13 +22,13 @@ spaces; the validator never infers the expected schema from the input being chec
 
 ## Windows setup and commands
 
-Open PowerShell in the repository root. Python 3.14 is the version used for this phase.
+Open PowerShell in the repository root. The project has been tested with Python 3.14.
 
 ```powershell
 python --version
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m pytest -q --ignore=tests/integration
 .\.venv\Scripts\python.exe -m csv_validation --dataset-root .\datasets
 $LASTEXITCODE
 ```
@@ -40,7 +40,7 @@ The direct dependency versions are pinned; transitive dependencies are resolved 
 Optional report:
 
 ```powershell
-.\.venv\Scripts\python.exe -m csv_validation --dataset-root .\datasets --report-path .\reports\phase2a.validation.json
+.\.venv\Scripts\python.exe -m csv_validation --dataset-root .\datasets --report-path .\reports\csv.validation.json
 $LASTEXITCODE
 ```
 
@@ -61,7 +61,7 @@ For each configured file, the validator:
 1. Reads bytes once and decodes UTF-8, accepting an optional UTF-8 BOM. Missing/unreadable files or invalid
    encoding fail that file; the other files are still processed.
 2. Warns if the file has no final newline. This alone does not fail structural validation and never
-   changes the file. Phase 1C demonstrated that SQL BULK INSERT can omit a final unterminated record.
+   changes the file. SQL BULK INSERT can omit a final unterminated record.
 3. Uses `csv.reader(strict=True)` to inspect the original header before Pandas can rename duplicates.
    It reports missing, unexpected and duplicate columns, and checks exact positional order.
 4. Counts all data records, checking the field count of every record. Short, long and blank physical
@@ -101,13 +101,3 @@ integrity, sales calculations, permissions of the SQL Server service, or actual 
 Python's CSV quoting support also does not certify every CSV as compatible with the existing SQL bulk
 options. A structural PASS is not a promise that SQL loading or downstream quality checks will pass.
 The implementation reads one file fully into memory; it is intended for these small supplied datasets.
-
-## Verification
-
-Executed on 2026-10-11 with Python 3.14.3, Pandas 3.0.6 and pytest 9.1.1 in the project `.venv`.
-All 17 tests passed. The real-data CLI returned 0: six files passed, with one missing-final-newline warning
-for `PX_CAT_G1V2.csv`; all 37 category records were counted. The six counts match the final Phase 1C
-Bronze counts and all source SHA-256 hashes are unchanged. Separate CLI processes on temporary files
-confirmed success exit code 0 and failure exit code 1, with all files processed.
-The complete results are in the [README](../README.md) and the ignored local report
-`reports/phase2a.validation.json`. No database connection was made.

@@ -1,13 +1,9 @@
-# Data Catalog — Gold Layer
+# Gold data catalog
 
-## Overview
-The **Gold Layer** is the business-level data representation designed for analytics and reporting.  
-It follows a **star schema** with **dimension** and **fact** objects.
-
----
+Gold exposes three analytical views over Silver. Product joins use the current product version. For persistent dimension keys and historical product matching, use the [sales mart](MART.md).
 
 ## 1) `gold.dim_customers`
-**Purpose:** Stores customer details enriched with demographic and geographic data.
+**Purpose:** Exposes customer details enriched with ERP demographic and geographic data.
 
 ### Columns
 
@@ -41,9 +37,9 @@ It follows a **star schema** with **dimension** and **fact** objects.
 | `category`       | NVARCHAR(50) | Broader classification of the product (e.g., `Bikes`, `Components`).                        |
 | `subcategory`    | NVARCHAR(50) | More detailed classification within the category (e.g., `Road Bikes`).                      |
 | `maintenance`    | NVARCHAR(50) | Indicates whether the product requires maintenance (e.g., `Yes`, `No`).                     |
-| `cost`           | INT          | The cost or base price of the product, in currency units.                                   |
+| `cost`           | INT          | Source product cost; currency is unspecified.                                   |
 | `product_line`   | NVARCHAR(50) | The product line or series (e.g., `Road`, `Mountain`).                                      |
-| `start_date`     | DATE         | The date when the product became available for sale or use.                                 |
+| `start_date`     | DATE         | Start date of the source product version.                                 |
 
 ---
 
@@ -59,7 +55,7 @@ It follows a **star schema** with **dimension** and **fact** objects.
 | `customer_key` | BIGINT          | Surrogate key linking the order to the customer dimension (`gold.dim_customers`).            |
 | `order_date`   | DATE         | The date when the order was placed.                                                           |
 | `shipping_date`| DATE         | The date when the order was shipped to the customer.                                          |
-| `due_date`     | DATE         | The date when payment for the order was due.                                                  |
+| `due_date`     | DATE         | Source due date for the order.                                                  |
 | `sales_amount` | INT          | Total monetary value of the sale for the line item (e.g., `250`).                             |
 | `quantity`     | INT          | Number of units of the product ordered for the line item (e.g., `1`).                         |
 | `price`        | INT          | Price per unit of the product for the line item, in whole currency units (e.g., `25`).        |

@@ -1,6 +1,6 @@
-# Phase 2C: connected pipeline, SQL quality, audit and JSON
+# Warehouse pipeline
 
-Phase 4B adds [end-to-end orchestration and a shared writer lock](E2E_PIPELINE.md).
+The [end-to-end runner](E2E_PIPELINE.md) coordinates warehouse and mart loading with a shared writer lock.
 Standalone warehouse runs now include a ninth `coordination` step and acquire the same database-scoped
 session application lock used by standalone mart and E2E. The existing validation/load/quality rules
 and full-load autocommit boundary are retained. `run_pipeline` still returns an exit code;
@@ -8,8 +8,7 @@ and full-load autocommit boundary are retained. `run_pipeline` still returns an 
 
 The current command validates CSV -> confirms target -> starts audit -> loads Bronze -> loads Silver ->
 checks SQL quality -> reads row counts -> finalizes audit and JSON. Gold objects remain views.
-No business transformation or input CSV was changed. Phase 2B results remain historical evidence in
-`PHASE_2B_RESULTS.json`; the current behavior is documented here.
+
 
 ## Responsibilities and deployment
 
@@ -30,11 +29,10 @@ and, for execute only, the existing loader/TRUNCATE/BULK INSERT permissions.
 
 ## Commands (PowerShell, repository root)
 
-Use the existing `.venv`; no installation is required for this phase. These commands each choose a fresh
-report name so previous verification reports are preserved:
+Use the project `.venv`. Each command chooses a fresh report filename:
 
 ```powershell
-$target = @('--server', 'DESKTOP-N1402MQ\SQLEXPRESS', '--expected-server', 'DESKTOP-N1402MQ\SQLEXPRESS', '--database', 'DataWarehouse')
+$target = @('--server', 'YOUR-PC\SQLEXPRESS', '--expected-server', 'YOUR-PC\SQLEXPRESS', '--database', 'DataWarehouse')
 
 .\.venv\Scripts\python.exe -m warehouse_pipeline @target --dataset-root .\datasets --dry-run --report-path ('.\reports\dry-' + [guid]::NewGuid() + '.json')
 
@@ -44,7 +42,7 @@ $target = @('--server', 'DESKTOP-N1402MQ\SQLEXPRESS', '--expected-server', 'DESK
 $LASTEXITCODE
 ```
 
-Every execute command deliberately reloads Bronze/Silver. Phase 2C verification ran it exactly once.
+Every execute command deliberately reloads Bronze/Silver.
 `--dry-run` is optional because it is the default. The three mode flags are mutually exclusive;
 quality-only is itself explicit permission to connect, so it must not be combined with --execute.
 Quality-only performs no CSV validation, no procedure existence requirement and no loader calls.
@@ -84,7 +82,7 @@ credentials are used; no password or connection string is saved in reports.
 
 Autocommit remains True. There is no whole-load rollback: completed changes can remain after failure.
 A failed quality gate does not undo loading or prevent direct Gold reads. Supported Python writers are
-serialized by the Phase 4B project lock; direct manual SQL without that protocol remains unprotected.
+serialized by the shared project lock; direct manual SQL without that protocol remains unprotected.
 Quality checks and row counts are separate SELECTs, not a whole-load transaction.
 
 ## Report contract and privacy
@@ -100,7 +98,7 @@ and separate audit errors. CSV summaries use file_index in the six-file config o
 sanitized newline warnings, not arbitrary headers, paths, row samples or parser details.
 SQL selects only aggregates. Raw driver exceptions are replaced by SQLSTATE; no customer values,
 birthdate samples, credentials or connection strings are recorded. Country values are not exported.
-Generated reports under reports/ are ignored by Git. Compact verification evidence lives in docs/.
+Generated reports under reports/ are ignored by Git.
 
 ## Inspect the latest audit in SSMS
 
@@ -129,12 +127,8 @@ If audit then fails too, JSON retains both the Bronze error and separate audit e
 changes may remain. Another tested failure is a successful load followed by an ERROR check with two
 anomalies: the load remains committed, but final status and audit are FAIL.
 
-## Verification
-
-See [Phase 2C results](PHASE_2C_VERIFICATION.md). Run tests with:
+## Tests
 
 ```powershell
-.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m pytest -q --ignore=tests/integration
 ```
-
-This phase adds no scheduler, Airflow, Docker, cloud, incremental loading or SCD.

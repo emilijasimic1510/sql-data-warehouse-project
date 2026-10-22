@@ -12,7 +12,7 @@ GO
 
 /* =============================================================================
    Dimension: gold.dim_customers
-   - Izvori: silver.crm_cust_info + silver.erp_customer_info + silver.erp_location_info
+   - Sources: silver.crm_cust_info + silver.erp_customer_info + silver.erp_location_info
    ============================================================================= */
 IF OBJECT_ID('gold.dim_customers', 'V') IS NOT NULL
     DROP VIEW gold.dim_customers;
@@ -22,13 +22,13 @@ CREATE VIEW gold.dim_customers AS
 SELECT
     ROW_NUMBER() OVER (ORDER BY ci.cst_id)              AS customer_key,      -- surrogate key
     ci.cst_id                                           AS customer_id,       -- natural key (CRM)
-    ci.cst_key                                          AS customer_number,   -- alternativni ključ (CRM)
+    ci.cst_key                                          AS customer_number,   -- alternate key (CRM)
     ci.cst_firstname                                    AS first_name,
     ci.cst_lastname                                     AS last_name,
     la.cntry                                            AS country,
     ci.cst_marital_status                               AS marital_status,
     CASE 
-        WHEN ci.cst_gndr <> 'n/a' THEN ci.cst_gndr      -- primarni izvor: CRM
+        WHEN ci.cst_gndr <> 'n/a' THEN ci.cst_gndr      -- primary source: CRM
         ELSE COALESCE(ca.gen, 'n/a')                    -- fallback: ERP
     END                                                 AS gender,
     ca.bdate                                            AS birthdate,
@@ -43,8 +43,8 @@ GO
 
 /* =============================================================================
    Dimension: gold.dim_products
-   - Izvori: silver.crm_product_info + silver.erp_product_category
-   - Filtrira aktivne proizvode (prd_end_dt IS NULL)
+   - Sources: silver.crm_product_info + silver.erp_product_category
+   - Includes current products (prd_end_dt IS NULL)
    ============================================================================= */
 IF OBJECT_ID('gold.dim_products', 'V') IS NOT NULL
     DROP VIEW gold.dim_products;
@@ -66,14 +66,14 @@ SELECT
 FROM silver.crm_product_info      AS pn
 LEFT JOIN silver.erp_product_category AS pc
        ON pn.cat_id = pc.id
-WHERE pn.prd_end_dt IS NULL;  -- isključi istorijske/redove sa krajem važnosti
+WHERE pn.prd_end_dt IS NULL;  -- exclude historical versions with an end date
 GO
 
 
 /* =============================================================================
    Fact: gold.fact_sales
-   - Izvor: silver.crm_sales_info
-   - Dimensional joins: gold.dim_products (po product_number) i gold.dim_customers (po customer_id)
+   - Source: silver.crm_sales_info
+   - Dimensional joins: gold.dim_products (by product_number) and gold.dim_customers (by customer_id)
    ============================================================================= */
 IF OBJECT_ID('gold.fact_sales', 'V') IS NOT NULL
     DROP VIEW gold.fact_sales;
